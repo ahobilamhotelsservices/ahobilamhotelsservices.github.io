@@ -25,7 +25,7 @@ body { font-family: 'Poppins', sans-serif; }
 /* Hero Section - Image & Overlay */
 .hero-section {
     height: 90vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('ahobilam-main-bg.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/ahobilam-main-bg.jpg') no-repeat center center/cover;
     display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 20px;
 }
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; margin-bottom: 15px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
@@ -829,5 +829,267 @@ input[type="datetime-local"] {
     height: auto;
     display: block;
     margin-bottom: 15px;
+}
+/* --- Hotels List Page Styles (YatraDham Style) --- */
 
+.hotel-list-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+/* ఒక్కో హోటల్ బాక్స్ */
+.hotel-card-row {
+    display: flex; /* పక్కపక్కన రావడానికి */
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.hotel-card-row:hover {
+    transform: translateY(-5px); /* మౌస్ పెడితే పైకి లేస్తుంది */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ఫోటో సెక్షన్ */
+.hotel-img-frame {
+    width: 35%;
+    position: relative;
+}
+
+.hotel-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 240px;
+}
+
+/* వివరాల సెక్షన్ */
+.hotel-info-frame {
+    width: 65%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hotel-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #d32f2f; /* ఎరుపు రంగు హెడ్డింగ్ */
+    margin-bottom: 8px;
+    font-family: 'Playfair Display', serif;
+}
+
+.hotel-location {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* సౌకర్యాలు (Amenities) */
+.amenities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.amenity-item {
+    background: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* టైమింగ్స్ */
+.check-time {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 15px;
+    border-top: 1px dashed #ccc;
+    padding-top: 10px;
+}
+
+/* బటన్ డిజైన్ */
+.select-room-btn {
+    background-color: #ff9800;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+    align-self: flex-start; /* ఎడమ వైపు ఉండటానికి */
+    transition: background 0.3s;
+}
+
+.select-room-btn:hover {
+    background-color: #e65100;
+}
+
+/* మొబైల్ ఫోన్ కోసం */
+@media (max-width: 768px) {
+    .hotel-card-row {
+        flex-direction: column; /* మొబైల్ లో ఒకదాని కింద ఒకటి */
+    }
+    .hotel-img-frame, .hotel-info-frame {
+        width: 100%;
+    }
+    .hotel-img-frame img {
+        height: 200px;
+    }
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff9e6; /* లేత క్రీమ్ రంగు */
+}
+
+ /* --- HOTEL PAGE FAQ STYLES (Unique Names) --- */
+
+.hotel-faq-section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.hotel-faq-main-title {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #ff9800;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* బాక్స్ డిజైన్ - కొత్త పేరుతో */
+.hotel-faq-item {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    overflow: hidden;
+}
+
+/* ప్రశ్న డిజైన్ */
+.hotel-faq-question {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.hotel-faq-question:hover {
+    background-color: #f1f1f1;
+}
+
+/* సమాధానం */
+.hotel-faq-answer {
+    display: none; /* కనిపించదు */
+    padding: 20px;
+    color: #555;
+    line-height: 1.6;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+
+/* ఓపెన్ అయినప్పుడు */
+.hotel-faq-item.active .hotel-faq-answer {
+    display: block !important;
+    position: relative !important;
+}
+
+.hotel-faq-item.active .hotel-faq-question {
+    background-color: #ffe0b2;
+    color: #d32f2f;
+}
+
+/* సింబల్స్ */
+.hotel-faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: #ff9800;
+}
+
+.hotel-faq-item.active .hotel-faq-question::after {
+    content: '-';
+}
+
+/* --- FINAL FOOTER (RED COLOR MATCH) --- */
+
+/* 1. ఫుటర్ బ్యాక్‌గ్రౌండ్ - ముదురు ఎరుపు రంగు (Maroon) */
+footer.main-footer {
+    background-color: #3d0505 !important; /* ఇది మీ ఫోటోలోని ఎరుపు రంగు */
+    color: white !important;
+    padding: 60px 0 20px;
+}
+
+/* 2. లింకులు అన్నీ వైట్ కలర్ (White) */
+footer.main-footer a {
+    color: #ffffff !important; 
+    text-decoration: none !important;
+    font-size: 16px;
+}
+
+/* 3. లిస్ట్ లో చుక్కలు తీసేయడం */
+footer.main-footer ul {
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+footer.main-footer ul li {
+    margin-bottom: 10px;
+}
+
+/* 4. హెడ్డింగ్స్ గోల్డ్/ఆరెంజ్ కలర్ */
+footer.main-footer h3 {
+    color: #ff9800 !important; /* Gold/Orange */
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #ff9800;
+    display: inline-block;
+}
+
+/* 5. మౌస్ పెట్టినప్పుడు */
+footer.main-footer a:hover {
+    color: #ff9800 !important;
+    padding-left: 5px;
+    transition: all 0.3s ease;
+}
+
+/* 6. గ్రిడ్ లేఅవుట్ (బాక్సులు పక్కపక్కన రావడానికి) */
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels - Ahobilam Hotels & Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <img src="images/logo.png" alt="Ahobilam Logo" class="site-logo">
+        </div>
+
+        <nav class="nav-links" id="navMenu">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="#about">ABOUT AHOBILAM</a></li>
+                <li><a href="#temples">TEMPLE TIMINGS</a></li>
+                <li><a href="#blogs">BLOGS</a></li>
+                <li><a href="hotels.html" class="active">HOTELS</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <a href="#" class="account-btn">
+                <svg class="user-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="btn-text">MY ACCOUNT</span>
+            </a>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hotel-list-container">
+        
+        <h1 style="text-align:center; margin: 30px 0; font-family:'Playfair Display';">Choose Your Stay in Ahobilam</h1>
+
+        <div class="hotel-card-row">
+            <div class="hotel-img-frame">
+                <img src="hotel1.jpg" alt="Rayala Charitable Trust">
+            </div>
+            <div class="hotel-info-frame">
+                <div>
+                    <div class="hotel-title">Rayala Charitable Trust</div>
+                    <div class="hotel-location">📍 Near Bypass Road, Diguva Ahobilam</div>
+                    <div class="amenities-list">
+                        <span class="amenity-item">✅ AC / Non-AC</span>
+                        <span class="amenity-item">✅ Hot Water</span>
+                        <span class="amenity-item">✅ Parking</span>
+                        <span class="amenity-item">✅ Free Launch & Dinner</span>
+                    </div>
+                    <div class="check-time">Check-in: 24 Hrs | Check-out: 24 Hrs</div>
+                </div>
+                <a href="Rayala-Charitable-Trust.html" class="select-room-btn">Select Room</a>
+            </div>
+        </div>
+
+        <div class="hotel-card-row">
+            <div class="hotel-img-frame">
+                <img src="hotel2.jpg" alt="Yogi Vemana Reddla Annasatram">
+            </div>
+            <div class="hotel-info-frame">
+                <div>
+                    <div class="hotel-title">Yogi Vemana Reddla Annasatram</div>
+                    <div class="hotel-location">📍 Near Bypass Road lower Ahobilam Road</div>
+                    <div class="amenities-list">
+                        <span class="amenity-item">✅ Restaurant</span>
+                        <span class="amenity-item">✅ AC Rooms</span>
+                        <span class="amenity-item">✅ Spacious</span>
+                        <span class="amenity-item">✅ Free Launch & Dinner</span>
+                    </div>
+                    <div class="check-time">Check-in: 24 Hrs | Check-out: 24 Hrs</div>
+                </div>
+                <a href="Yogi-Vemana-Reddla-Annasatram.html" class="select-room-btn">Select Room</a>
+            </div>
+        </div>
+
+        <div class="hotel-card-row">
+            <div class="hotel-img-frame">
+                <img src="hotel3.jpg" alt="Arya Vysya Annadhana Satram">
+            </div>
+            <div class="hotel-info-frame">
+                <div>
+                    <div class="hotel-title">Arya Vysya Annadhana Satram</div>
+                    <div class="hotel-location">📍 Near Narasimha Swamy Temple</div>
+                    <div class="amenities-list">
+                        <span class="amenity-item">✅ Budget Friendly</span>
+                        <span class="amenity-item">✅ Clean Rooms</span>
+                    </div>
+                    <div class="check-time">Check-in: Flexible | Check-out: 24 Hrs</div>
+                </div>
+                <a href="Arya-Vysya-Annadhana-Satram" class="select-room-btn">Select Room</a>
+            </div>
+        </div>
+
+        <div class="hotel-card-row">
+            <div class="hotel-img-frame">
+                <img src="hotel4.jpg" alt="Padmashali Annadhana Satram ">
+            </div>
+            <div class="hotel-info-frame">
+                <div>
+                    <div class="hotel-title">Padmashali Annadhana Satram</div>
+                    <div class="hotel-location">📍 Near Narasimha swamy Temple Ahobilam</div>
+                    <div class="amenities-list">
+                        <span class="amenity-item">✅ Family Rooms</span>
+                        <span class="amenity-item">✅ Security</span>
+                    </div>
+                    <div class="check-time">Check-in: 24 Hrs | Check-out: 24 Hrs</div>
+                </div>
+                <a href="Padmashali-Annadhana-Satram.html" class="select-room-btn">Select Room</a>
+            </div>
+        </div>
+
+        <div class="hotel-card-row">
+            <div class="hotel-img-frame">
+                <img src="hotel5.jpg" alt="Swathi Complex">
+            </div>
+            <div class="hotel-info-frame">
+                <div>
+                    <div class="hotel-title">Swathi Complex</div>
+                    <div class="hotel-location">📍 1 km distance from the Ahobilam Temple</div>
+                    <div class="amenities-list">
+                        <span class="amenity-item">✅ Traditional Stay</span>
+                        <span class="amenity-item">✅ Only for Devotees</span>
+                    </div>
+                    <div class="check-time">Check-in: Morning | Check-out: Evening</div>
+                </div>
+                <a href="Swathi-Complex.html" class="select-room-btn">Select Room</a>
+            </div>
+        </div>
+
+<div class="hotel-card-row">
+            <div class="hotel-img-frame">
+                <img src="hotel6.jpg" alt="Sudharshan Complex">
+            </div>
+            <div class="hotel-info-frame">
+                <div>
+                    <div class="hotel-title">Sudharshan Complex</div>
+                    <div class="hotel-location">📍 Near Temple Premises</div>
+                    <div class="amenities-list">
+                        <span class="amenity-item">✅ Traditional Stay</span>
+                        <span class="amenity-item">✅ Only for Devotees</span>
+                    </div>
+                    <div class="check-time">Check-in: Morning | Check-out: Evening</div>
+                </div>
+                <a href="Sudharshan-Complex.html" class="select-room-btn">Select Room</a>
+            </div>
+        </div>
+
+<div class="hotel-card-row">
+            <div class="hotel-img-frame">
+                <img src="hotel7.jpg" alt="Amruthavalli Hotel">
+            </div>
+            <div class="hotel-info-frame">
+                <div>
+                    <div class="hotel-title">Amruthavalli Hotel</div>
+                    <div class="hotel-location">📍 1/2 km Distance from the Ahobilam Temple</div>
+                    <div class="amenities-list">
+                        <span class="amenity-item">✅ Traditional Stay</span>
+                        <span class="amenity-item">✅ Only for Devotees</span>
+                    </div>
+                    <div class="check-time">Check-in: Morning | Check-out: Evening</div>
+                </div>
+                <a href="Amruthavalli-Hotel.html" class="select-room-btn">Select Room</a>
+            </div>
+        </div>
+
+<div class="hotel-card-row">
+            <div class="hotel-img-frame">
+                <img src="hotel8.jpg" alt="Lakshmi Divya Guest House">
+            </div>
+            <div class="hotel-info-frame">
+                <div>
+                    <div class="hotel-title">Lakshmi Divya Guest House</div>
+                    <div class="hotel-location">📍 Near Temple Premises</div>
+                    <div class="amenities-list">
+                        <span class="amenity-item">✅ Traditional Stay</span>
+                        <span class="amenity-item">✅ Only for Devotees</span>
+                    </div>
+                    <div class="check-time">Check-in: Morning | Check-out: Evening</div>
+                </div>
+                <a href="Lakshmi-Divya-Guest-House.html" class="select-room-btn">Select Room</a>
+            </div>
+        </div>
+
+<div class="hotel-card-row">
+            <div class="hotel-img-frame">
+                <img src="hotel9.jpg" alt="Gowtham Home Stay">
+            </div>
+            <div class="hotel-info-frame">
+                <div>
+                    <div class="hotel-title">Gowtham Home Stay</div>
+                    <div class="hotel-location">📍 Near Temple Premises</div>
+                    <div class="amenities-list">
+                        <span class="amenity-item">✅ Traditional Stay</span>
+                        <span class="amenity-item">✅ Only for Devotees</span>
+                    </div>
+                    <div class="check-time">Check-in: Morning | Check-out: Evening</div>
+                </div>
+                <a href="Gowtham-Home-Stay.html" class="select-room-btn">Select Room</a>
+            </div>
+        </div>
+
+        <div class="hotel-card-row">
+            <div class="hotel-img-frame">
+                <img src="hotel10.jpg" alt="Srinidhi Guest House">
+            </div>
+            <div class="hotel-info-frame">
+                <div>
+                    <div class="hotel-title">Srinidhi Guest House</div>
+                    <div class="hotel-location">📍 temple Road</div>
+                    <div class="amenities-list">
+                        <span class="amenity-item">✅ Traditional Stay</span>
+                        <span class="amenity-item">✅ Only for Devotees</span>
+                    </div>
+                    <div class="check-time">Check-in: Morning | Check-out: Evening</div>
+                </div>
+                <a href="Srinidhi-Guest-House.html" class="select-room-btn">Select Room</a>
+            </div>
+        </div>
+
+        </div>
+
+    <script>
+        // మొబైల్ మెనూ ఓపెన్ అవ్వడానికి స్క్రిప్ట్
+        function toggleMenu() {
+            var nav = document.getElementById("navMenu");
+            nav.classList.toggle("active");
+        }
+    </script>
+
+<div class="hotel-faq-section">
+        <h2 class="hotel-faq-main-title">FAQs - Accommodation in Ahobilam</h2>
+
+        <div class="hotel-faq-item">
+            <div class="hotel-faq-question">1. Which types of accommodations are available in Ahobilam?</div>
+            <div class="hotel-faq-answer">Ahobilam offers various stay options including Private Guest Houses, APTDC Haritha Hotel, Ahobila Mutt Chatrams, and budget lodges.</div>
+        </div>
+
+        <div class="hotel-faq-item">
+            <div class="hotel-faq-question">2. Is it necessary to book rooms in advance?</div>
+            <div class="hotel-faq-answer">Yes, absolutely. During weekends, Swathi Nakshatram days, and festivals like Brahmotsavams, rooms get fully booked very fast.</div>
+        </div>
+
+        <div class="hotel-faq-item">
+            <div class="hotel-faq-question">3. What are the check-in and check-out timings?</div>
+            <div class="hotel-faq-answer">Most private guest houses offer a 24-hour check-in/check-out policy. However, government hotels like Haritha have fixed timings (10 AM Check-in, 9 AM Check-out).</div>
+        </div>
+
+        <div class="hotel-faq-item">
+            <div class="hotel-faq-question">4. Are food facilities available at these hotels?</div>
+            <div class="hotel-faq-answer">Hotels like Haritha have attached restaurants. For others, there are many private canteens and mess facilities available near the temple.</div>
+        </div>
+
+        <div class="hotel-faq-item">
+            <div class="hotel-faq-question">5. Is car parking available?</div>
+            <div class="hotel-faq-answer">Yes, almost all guest houses and hotels in Ahobilam provide safe parking spaces for cars and tourist buses.</div>
+        </div>
+    </div>
+
+<script>
+        // మొబైల్ మెనూ స్క్రిప్ట్
+        function toggleMenu() {
+            var nav = document.getElementById("navMenu");
+            nav.classList.toggle("active");
+        }
+
+        // కొత్త FAQ స్క్రిప్ట్ (Hotel Page Only)
+        const hotelFaqItems = document.querySelectorAll('.hotel-faq-item');
+
+        hotelFaqItems.forEach(item => {
+            const question = item.querySelector('.hotel-faq-question');
+            question.addEventListener('click', () => {
+                // మిగతావి క్లోజ్ చేయడం
+                hotelFaqItems.forEach(other => {
+                    if (other !== item) other.classList.remove('active');
+                });
+                // క్లిక్ చేసినది ఓపెన్ చేయడం
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        
+        <div class="footer-box">
+            <img src="foter-logo.png" alt="Ahobilam Hotels Logo" class="footer-logo">
+            <p>Our mission is to provide excellent accommodation and service to the devotees visiting the holy abode of Ahobilam Narasimha Swamy.</p>
+        </div>
+
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Ahobilam</a></li>
+                <li><a href="#">Hotels</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box">
+            <h3>Policies</h3>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Return & Refund Policy</a></li>
+                <li><a href="#">Guest Policy</a></li>
+                <li><a href="#">Booking Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box">
+            <h3>Contact Us</h3>
+            <p><strong>Email:</strong><br>
+               <a href="mailto:ahobilamhotelsservices@gmail.com">ahobilamhotelsservices@gmail.com</a>
+            </p>
+            <p style="margin-top: 15px;"><strong>Address:</strong><br>
+               Ahobilam(V), Allagadda(M),<br>
+               Nandyala - 518543, AP.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Ahobilam Hotels & Services. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
