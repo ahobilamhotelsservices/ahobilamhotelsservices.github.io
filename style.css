@@ -25,7 +25,7 @@ body { font-family: 'Poppins', sans-serif; }
 /* Hero Section - Image & Overlay */
 .hero-section {
     height: 90vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/ahobilam-main-bg.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('ahobilam-main-bg.jpg') no-repeat center center/cover;
     display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 20px;
 }
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; margin-bottom: 15px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
@@ -1092,4 +1092,5 @@ footer.main-footer a:hover {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+
 }
