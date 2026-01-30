@@ -11,7 +11,7 @@
 
     <header class="main-header">
         <div class="logo-area">
-            <img src="logo.png" alt="Ahobilam Logo" class="site-logo">
+            <img src="images/logo.png" alt="Ahobilam Logo" class="site-logo">
         </div>
 
         <nav class="nav-links" id="navMenu">
@@ -150,7 +150,7 @@
             </div>
         </div>
 
-        <a href="javascript:void(0)" class="room-right-price-btn" onclick="openBookingModal('Rayala charitable trust', 'non-ac')">
+        <a href="javascript:void(0)" class="room-right-price-btn" onclick="openBookingModal('Rayala charitable trust', 'non-ac',10)">
             <span class="price-txt">₹700</span>
             <span class="book-txt">Book Now ></span>
         </a>
@@ -405,11 +405,11 @@
             <div style="display: flex; gap: 15px; margin-bottom: 15px;">
                 <div style="flex: 1;">
                     <label style="font-size: 12px; font-weight: bold; color:#555;">Check-In</label>
-                    <input type="datetime-local" id="checkIn" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 13px; box-sizing: border-box; background: #f9f9f9;">
+                    <input type="datetime-local" id="checkIn" step="3600" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 13px; box-sizing: border-box; background: #f9f9f9;">
                 </div>
                 <div style="flex: 1;">
                     <label style="font-size: 12px; font-weight: bold; color:#555;">Check-Out</label>
-                    <input type="datetime-local" id="checkOut" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 13px; box-sizing: border-box; background: #f9f9f9;">
+                    <input type="datetime-local" id="checkOut" step="3600" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 13px; box-sizing: border-box; background: #f9f9f9;">
                 </div>
             </div>
 
@@ -430,6 +430,12 @@
                     <input type="number" id="children" value="0" min="0" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
                 </div>
             </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 12px; font-weight: bold; color:#555;">Full Name</label>
+                <input type="text" id="p_name" placeholder="Enter Full Name" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; box-sizing: border-box;">
+            </div>
+
 
             <div style="margin-bottom: 15px;">
                 <label style="font-size: 12px; font-weight: bold; color:#555;">Mobile Number</label>
@@ -458,94 +464,105 @@
 
 <script>
     // 1. Open Booking Form with Room Limits
-// ఇక్కడ 'totalRooms' అనే కొత్త ఆప్షన్ యాడ్ చేసాము
-function openBookingModal(hotelName, roomType, totalRooms) {
-    var modal = document.getElementById("bookingModal");
-    if (modal) {
-        modal.style.display = "flex"; // మొబైల్ డిజైన్ కోసం flex వాడండి
-        
-        // హోటల్ పేరు, రూమ్ పేరు సెట్ చేయడం
-        document.getElementById("selectedHotel").value = hotelName;
-        document.getElementById("selectedRoomType").value = roomType;
+    function openBookingModal(hotelName, roomType, totalRooms) {
+        var modal = document.getElementById("bookingModal");
+        if (modal) {
+            modal.style.display = "flex"; 
+            
+            // హోటల్ పేరు, రూమ్ పేరు సెట్ చేయడం
+            document.getElementById("selectedHotel").value = hotelName;
+            document.getElementById("selectedRoomType").value = roomType;
 
-        // 👇 అసలైన మ్యాజిక్ ఇక్కడే జరుగుతుంది (Dropdown Logic) 👇
-        var roomSelect = document.getElementById("roomsCount");
-        roomSelect.innerHTML = ""; // పాత ఆప్షన్స్ క్లియర్ చేస్తున్నాం
-
-        // లూప్ తిప్పి, ఎన్ని రూమ్స్ ఉంటే అవే నంబర్లు చూపిస్తున్నాం
-        for (var i = 1; i <= totalRooms; i++) {
-            var option = document.createElement("option");
-            option.value = i;
-            option.text = i + " Room" + (i > 1 ? "s" : ""); // 1 Room, 2 Rooms...
-            roomSelect.appendChild(option);
+            // 👇 Rooms Logic (ఇది పర్ఫెక్ట్ గా ఉంది)
+            var roomSelect = document.getElementById("roomsCount");
+            if(roomSelect) {
+                roomSelect.innerHTML = ""; // పాతవి క్లియర్
+                for (var i = 1; i <= totalRooms; i++) {
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.text = i + " Room" + (i > 1 ? "s" : ""); 
+                    roomSelect.appendChild(option);
+                }
+            }
         }
     }
-}
 
-    // 2. Function to close the booking form
+    // 2. Close Form
     function closeBookingModal() {
         document.getElementById("bookingModal").style.display = "none";
     }
 
-    // 3. Function to send data to Google Sheet (Final Code)
-    // 3. డేటాను గూగుల్ షీట్‌కి మరియు మెయిల్‌కి పంపే ఫంక్షన్ (Final Corrected Code)
+    // 3. Handle Booking (Name Logic Added Here)
     function handleBooking(event) {
         event.preventDefault();
         
-        // బటన్ టెక్స్ట్ మార్చడం (యూజర్‌కి ప్రాసెస్ అవుతుందని తెలియడానికి)
         var submitBtn = event.target.querySelector("button[type='submit']");
         if(submitBtn) submitBtn.innerText = "Processing...";
         
-        // 1. ఫామ్ నుండి వివరాలు తీసుకోవడం
-        var hotel = document.getElementById("selectedHotel") ? document.getElementById("selectedHotel").value : "Unknown Hotel";
-        var roomType = document.getElementById("selectedRoomType") ? document.getElementById("selectedRoomType").value : "General";
-        var phone = document.getElementById("userPhone").value;
+        // --- వివరాలు తీసుకోవడం ---
+        var hotel = document.getElementById("selectedHotel").value;
+        var roomType = document.getElementById("selectedRoomType").value;
         
-        // 👇 ఈమెయిల్ తీసుకోవడం (Safety Check తో)
-        var emailInput = document.getElementById("userEmail");
-        var email = emailInput ? emailInput.value : ""; 
+        // 👉 Name Logic (ముఖ్యమైనది)
+        var nameInput = document.getElementById("p_name"); 
+        var name = nameInput ? nameInput.value : "Guest"; 
+
+        var phone = document.getElementById("userPhone").value;
+        var email = document.getElementById("userEmail") ? document.getElementById("userEmail").value : ""; 
 
         var checkIn = document.getElementById("checkIn").value;
         var checkOut = document.getElementById("checkOut").value;
         var rooms = document.getElementById("roomsCount").value;
-        var adults = "2"; // Default
-        var children = "0"; // Default
+        
+        // 🔴 మీ కొత్త App Script URL (Replace this with your NEW URL)
+        var scriptURL = "https://script.google.com/macros/s/AKfycbxKQTlKrjiT8y6IZxSnDJkyNkfSAXDHzQYzIrGBkxvhV4eiM0GHw_8Xw38F6_3D_K9m/exec";
 
-        // 🔴 మీ కొత్త లింక్ (New Script URL)
-        var scriptURL = "https://script.google.com/macros/s/AKfycbys353KwMf8R4S6zZYBYzIvdVo0dczaXHMLd4HvjFbUYxpokJYS-RzDBx3u5bBd78oh/exec";
-
-        // 2. URL తయారు చేయడం (action=book మరియు email ని కలుపుతున్నాం)
+        // URL తయారు చేయడం
         var finalURL = scriptURL + 
-                       "?action=book" + 
-                       "&hotel=" + encodeURIComponent(hotel) + 
-                       "&roomType=" + encodeURIComponent(roomType) + 
-                       "&email=" + encodeURIComponent(email) +  // ✅ ఇదిగోండి, ఇక్కడ ఈమెయిల్ యాడ్ చేశాను
-                       "&phone=" + phone + 
-                       "&checkIn=" + checkIn + 
-                       "&checkOut=" + checkOut + 
-                       "&rooms=" + rooms + 
-                       "&adults=" + adults + 
-                       "&children=" + children;
+                        "?action=book" + 
+                        "&hotel=" + encodeURIComponent(hotel) + 
+                        "&roomType=" + encodeURIComponent(roomType) + 
+                        "&name=" + encodeURIComponent(name) +   // ✅ Name యాడ్ చేశాను
+                        "&email=" + encodeURIComponent(email) + 
+                        "&phone=" + phone + 
+                        "&checkIn=" + checkIn + 
+                        "&checkOut=" + checkOut + 
+                        "&rooms=" + rooms + 
+                        "&adults=2&children=0";
 
-        // 3. డేటా పంపడం
+        // డేటా పంపడం
         fetch(finalURL, {
             method: 'GET',
             mode: 'no-cors'
         })
         .then(() => {
-            alert("Booking Request Sent! \nConfirmation mail sent to your email.");
-            // సక్సెస్ అయ్యాక అకౌంట్ పేజీకి వెళ్తుంది
+            alert("Booking Request Sent Successfully!");
             window.location.href = "account.html?phone=" + phone; 
         })
         .catch(error => {
             console.error('Error!', error.message);
             alert("Network Error. Please try again.");
-            if(submitBtn) submitBtn.innerText = "Proceed";
+            if(submitBtn) submitBtn.innerText = "Book Now";
         });
     }
+
+    // --- Date Logic (Fixed) ---
+    function setMinDate() {
+        var inputs = document.querySelectorAll("input[type='datetime-local']");
+        var now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        var minDateTime = now.toISOString().slice(0, 16);
+
+        inputs.forEach(function(input) {
+            input.min = minDateTime;
+        });
+    }
+
+    // పేజీ లోడ్ అయినప్పుడు డేట్ సెట్ అవుతుంది
+    document.addEventListener('DOMContentLoaded', setMinDate);
+    window.onmouseover = setMinDate;
+
 </script>
 
 </body>
-
 </html>
-

@@ -9,11 +9,9 @@
 </head>
 <body>
 
-
-    
     <header class="main-header">
         <div class="logo-area">
-            <img src="logo.png" alt="Ahobilam Logo" class="site-logo">
+            <img src="images/logo.png" alt="Ahobilam Logo" class="site-logo">
         </div>
 
         <nav class="nav-links" id="navMenu">
@@ -27,7 +25,7 @@
         </nav>
 
         <div class="header-right">
-            <a href="account.html" class="account-btn">
+            <a href="#" class="account-btn">
                 <svg class="user-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
@@ -64,11 +62,11 @@
                 <div class="form-row">
                     <div class="input-group">
                         <label>Check-in (Date & Time)</label>
-                        <input type="datetime-local" id="p_checkin" required>
+                        <input type="datetime-local" id="p_checkin" step="3600" required>
                     </div>
                     <div class="input-group">
                         <label>Check-out (Date & Time)</label>
-                        <input type="datetime-local" id="p_checkout" required>
+                        <input type="datetime-local" id="p_checkout" step="3600" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -126,7 +124,7 @@
 
     <div class="hotels-grid">
         <div class="hotel-card">
-            <a href="rayala-charitable-trust.html" class="hotel-link">
+            <a href="hotel-details.html" class="hotel-link">
                 <img src="hotel1.jpg" alt="Rayala Charitable Trust" class="hotel-img">
                 <h3 class="hotel-name">Rayala Charitable Trust</h3>
             </a>
@@ -134,7 +132,7 @@
         </div>
 
         <div class="hotel-card">
-            <a href="rayala-charitable-trust.html" class="hotel-link">
+            <a href="hotel-details.html" class="hotel-link">
                 <img src="hotel2.jpg" alt="Yogi Vemana Reddla" class="hotel-img">
                 <h3 class="hotel-name">Yogi Vemana Reddla Annadhana Satram</h3>
             </a>
@@ -175,7 +173,7 @@
     </div>
 
     <div class="view-more-area">
-        <a href="next-hotels.html" class="view-more-btn">View More Hotels</a>
+        <a href="hotels.html" class="view-more-btn">View More Hotels</a>
     </div>
 </section>
 
@@ -199,7 +197,7 @@
     </div>
 
     <div class="history-visual">
-        <img src="Ahobilam-Narasimhaswamy-Temple1.jpg" alt="Ahobilam History">
+        <img src="https://ahobilam.in/wp-content/uploads/2025/09/Ahobilam-Narasimhaswamy-Temple1.jpg" alt="Ahobilam History">
     </div>
 </section>
 
@@ -212,7 +210,7 @@
 
     <div class="ritual-block">
         <div class="ritual-img-frame">
-            <img src="ahobilam-Swathi-Nakhatram.jpg" alt="Swathi Utsavam">
+            <img src="https://ahobilam.in/wp-content/uploads/2026/01/ahobilam-Swathi-Nakhatram.jpeg" alt="Swathi Utsavam">
         </div>
         <div class="ritual-info">
             <h3>The Significance of Swathi</h3>
@@ -237,7 +235,7 @@
 
     <div class="ritual-block">
         <div class="ritual-img-frame">
-            <img src="sudharshana-homam-1.jpg" alt="Sudharshana Homam">
+            <img src="https://ahobilam.in/wp-content/uploads/2026/01/sudharshana-homam-1.jpeg" alt="Sudharshana Homam">
         </div>
         <div class="ritual-info">
             <h3>2. Sri Sudharshana Homam</h3>
@@ -258,7 +256,7 @@
 
     <div class="ritual-block">
         <div class="ritual-img-frame">
-            <img src="images/ugra1.jpg" alt="Start of Ugra Stambham Trek">
+            <img src="images/Ugra stambham1.jpg" alt="Start of Ugra Stambham Trek">
         </div>
         <div class="ritual-info">
             <h3>The Divine Ascent Begins</h3>
@@ -410,6 +408,23 @@
             });
         });
     });
+// పాత తేదీలు రాకుండా ఆపే కోడ్ (Disable Past Dates)
+function setMinDate() {
+    var now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+    var minDateTime = now.toISOString().slice(0, 16);
+
+    // అన్ని Check-in బాక్సులకు ఇది వర్తిస్తుంది
+    var checkins = document.querySelectorAll("input[type='datetime-local']");
+    checkins.forEach(function(input) {
+        input.min = minDateTime;
+    });
+}
+
+// పేజీ ఓపెన్ అయినప్పుడు మరియు క్లిక్ చేసినప్పుడు ఇది పనిచేస్తుంది
+window.onload = setMinDate;
+window.onmouseover = setMinDate;
+
 </script>
 
 <footer class="main-footer">
@@ -458,14 +473,4 @@
 </footer>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
