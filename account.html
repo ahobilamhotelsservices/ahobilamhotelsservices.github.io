@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Booking Status - Ahobilam</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fce4ec; text-align: center; padding: 20px; }
+        .login-box { background: white; max-width: 400px; margin: 30px auto; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { color: #8B0000; margin-bottom: 20px; }
+        input { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
+        button { background: #8B0000; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #a00000; }
+        
+        /* Status Card Styling */
+        .status-card { display: none; margin-top: 20px; text-align: left; background: #fff8e1; padding: 20px; border-left: 5px solid #ffcc00; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .status-item { margin-bottom: 10px; font-size: 15px; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
+        .status-item strong { color: #555; }
+        .status-value { font-weight: bold; color: #000; float: right; }
+        
+        /* Payment Section */
+        .pay-section { display: none; margin-top: 15px; text-align: center; border-top: 1px solid #eee; padding-top: 15px; }
+        .pay-btn { background: #28a745; animation: pulse 2s infinite; }
+        .pay-btn:hover { background: #218838; }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .home-link { display: block; margin-top: 20px; color: #8B0000; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <h2>🙏 Pilgrim Services</h2>
+        <p>Enter your mobile number to check booking status</p>
+        
+        <input type="tel" id="checkPhone" placeholder="Enter Mobile Number" required>
+        <button onclick="checkStatus()">Check Status</button>
+
+        <p id="loadingTxt" style="display:none; color:blue; margin-top:10px;">Fetching details...</p>
+
+        <div id="resultCard" class="status-card">
+            <h3 style="margin-top:0; color:#8B0000;">Booking Details</h3>
+            
+            <div class="status-item">
+                <strong>Hotel:</strong> <span id="resHotel" class="status-value">-</span>
+            </div>
+            <div class="status-item">
+                <strong>Room:</strong> <span id="resRoom" class="status-value">-</span>
+            </div>
+            <div class="status-item">
+                <strong>Check-In:</strong> <span id="resDate" class="status-value">-</span>
+            </div>
+            <div class="status-item">
+                <strong>Status:</strong> <span id="resStatus" class="status-value" style="color:orange;">Pending</span>
+            </div>
+            
+            <div id="paymentArea" class="pay-section">
+                <p style="color:green; font-weight:bold;">✅ Your room is confirmed!</p>
+                <button class="pay-btn" onclick="openPayment()">Pay Now</button>
+            </div>
+        </div>
+
+        <a href="#" onclick="window.history.back(); return false;" class="home-link">← Go Back</a>
+    </div>
+
+<div id="paymentModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
+    
+    <div style="background:white; padding:25px; border-radius:15px; text-align:center; max-width:350px; width:90%; position: relative;">
+        
+        <span onclick="closePayment()" style="position: absolute; right: 15px; top: 10px; font-size: 28px; cursor: pointer; color: #888;">&times;</span>
+
+        <h3 style="color:#8B0000; margin-top:0;">Payment Details</h3>
+        
+        <div style="margin: 15px 0;">
+            <h2 id="displayAmount" style="color:#28a745; font-size:32px; margin: 0;">₹0</h2>
+            <p id="amountDetails" style="color:gray; font-size: 13px;">Loading...</p>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 10px; border-radius: 10px; display: inline-block; margin-bottom: 15px; border: 1px solid #ddd;">
+            <img id="dynamicQR" src="" alt="QR Code Loading..." style="width: 160px; height: 160px;">
+            <p style="font-size: 12px; margin: 5px 0 0 0; color: #555;">Scan with PhonePe / GPay</p>
+        </div>
+
+        <a id="payLink" href="#" style="text-decoration: none;">
+            <button style="background:#28a745; color:white; padding:10px 20px; border:none; border-radius:50px; width:100%; font-weight:bold; cursor:pointer; font-size: 15px; margin-bottom: 10px;">
+                Open App (Mobile Only) 🚀
+            </button>
+        </a>
+
+        <button onclick="confirmPayment()" style="background:#007bff; color:white; padding:10px 20px; border:none; border-radius:50px; width:100%; font-weight:bold; cursor:pointer; font-size: 15px;">
+            ✅ I Have Paid
+        </button>
+
+        <br>
+        <button onclick="closePayment()" style="color:red; background:none; border:none; cursor:pointer; margin-top: 15px; text-decoration: underline;">Close</button>
+    </div>
+</div>
+
+    <script>
+    // 🔴 1. మీ Apps Script URL (ఇది కరెక్ట్ గా ఉందో లేదో చూసుకోండి)
+    const scriptURL = "https://script.google.com/macros/s/AKfycbys353KwMf8R4S6zZYBYzIvdVo0dczaXHMLd4HvjFbUYxpokJYS-RzDBx3u5bBd78oh/exec";
+
+    // డేటా దాచుకోవడానికి గ్లోబల్ వేరియబుల్స్
+    var bookingData = {}; 
+    var currentTotalAmount = 0; 
+
+    // 🔴 2. హోటల్ వారీగా ధరల లిస్ట్ (ఇది లేకపోతే బటన్ పనిచేయదు!)
+    var hotelPrices = {
+        "Rayala Charitable Trust": {
+            "non-ac": 700,
+            "ac-2bed": 1200,
+            "ac-3bed": 1500
+        },
+        "Ahobila Mutt": { 
+            "non-ac": 700,
+            "ac-2bed": 1200,
+            "ac-3bed": 1800
+        },
+        "Haritha Hotel": { 
+            "non-ac": 1000,
+            "ac-2bed": 2000,
+            "ac-3bed": 2500
+        }
+    };
+
+    // పేజీ లోడ్ అవ్వగానే రన్ అవుతుంది
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const phone = urlParams.get('phone');
+        if (phone) {
+            document.getElementById("checkPhone").value = phone;
+            checkStatus();
+        }
+    };
+
+    // 3. స్టేటస్ చెక్ చేసే ఫంక్షన్
+    function checkStatus() {
+        var phone = document.getElementById("checkPhone").value;
+        if(!phone) { alert("Please enter mobile number"); return; }
+
+        document.getElementById("loadingTxt").style.display = "block";
+        document.getElementById("resultCard").style.display = "none";
+
+        fetch(scriptURL + "?action=login&phone=" + phone)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("loadingTxt").style.display = "none";
+            
+            if(data.status === "NotFound") {
+                alert("No booking found! \n(బుకింగ్ వివరాలు దొరకలేదు)");
+            } else {
+                bookingData = data; // డేటా సేవ్ చేస్తున్నాం
+
+                document.getElementById("resultCard").style.display = "block";
+                document.getElementById("resHotel").innerText = data.hotel;
+                document.getElementById("resRoom").innerText = data.room; 
+                document.getElementById("resDate").innerText = data.checkIn + " to " + data.checkOut;
+                
+                var statusElem = document.getElementById("resStatus");
+                statusElem.innerText = data.status;
+
+                if(data.status === "Confirmed") {
+                    statusElem.style.color = "green";
+                    document.getElementById("paymentArea").style.display = "block";
+                } else if (data.status === "Paid (Verify)") {
+                    statusElem.style.color = "blue";
+                    statusElem.innerText = "Paid (Verifying...)";
+                    document.getElementById("paymentArea").style.display = "none";
+                } else {
+                    statusElem.style.color = "orange";
+                    document.getElementById("paymentArea").style.display = "none";
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById("loadingTxt").style.display = "none";
+            alert("Network Error. Please check internet.");
+        });
+    }
+
+    // 4. పేమెంట్ బటన్ నొక్కినప్పుడు ఇది రన్ అవుతుంది
+    function openPayment() {
+        // A. డేటా చెకింగ్
+        if (!bookingData.hotel) {
+            alert("Error: Booking data missing. Please refresh.");
+            return;
+        }
+
+        // B. రూమ్ మరియు రేటు
+        var rawRoomName = bookingData.room ? bookingData.room.toLowerCase() : "non-ac";
+        var rType = "non-ac"; 
+        if (rawRoomName.includes("non")) rType = "non-ac";
+        else if (rawRoomName.includes("3")) rType = "ac-3bed";
+        else rType = "ac-2bed";
+
+        var hotelName = bookingData.hotel;
+        var selectedHotelRates = hotelPrices[hotelName] || hotelPrices["Rayala Charitable Trust"];
+        var pricePerNight = selectedHotelRates[rType] || 800;
+
+        // C. కాలిక్యులేషన్
+        var days = calculateDays(bookingData.checkIn, bookingData.checkOut);
+        var rooms = parseInt(bookingData.rooms) || 1;
+        currentTotalAmount = pricePerNight * rooms * days;
+
+        // D. UPI లింక్ తయారీ
+        var myUPI = "8464919219@ybl"; 
+        var myName = "Rayala Trust"; 
+        var phone = document.getElementById("checkPhone").value;
+        
+        // ఇది UPI లింక్ (బటన్ కోసం)
+        var upiLink = "upi://pay?pa=" + myUPI + "&pn=" + myName + "&am=" + currentTotalAmount + "&tn=Booking-" + phone + "&cu=INR";
+
+        // E. మోడల్ ఓపెన్ చేయడం
+        var modal = document.getElementById("paymentModal");
+        if(modal) {
+            // 1. బటన్ కి లింక్ ఇవ్వడం
+            document.getElementById("payLink").href = upiLink;
+            
+            // 2. 👇 మ్యాజిక్ ఇక్కడే: QR Code ఆటోమేటిక్ గా జనరేట్ అవుతుంది 👇
+            // ఇది ఫ్రీ QR Code API వాడుతుంది
+            var qrApiUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(upiLink);
+            document.getElementById("dynamicQR").src = qrApiUrl;
+
+            // 3. టెక్స్ట్ చూపించడం
+            document.getElementById("displayAmount").innerText = "₹" + currentTotalAmount;
+            document.getElementById("amountDetails").innerText = `${hotelName}\n(${rooms} Rooms x ${days} Days x ₹${pricePerNight})`;
+            
+            modal.style.display = "flex";
+        }
+    }
+
+    function confirmPayment() {
+        var phone = document.getElementById("checkPhone").value;
+        var btn = event.target;
+        btn.innerText = "Updating...";
+        btn.disabled = true;
+
+        fetch(scriptURL + "?action=updatePayment&phone=" + phone + "&amount=" + currentTotalAmount)
+        .then(response => {
+            alert("Payment details sent! Admin will verify soon.");
+            closePayment();
+            checkStatus(); 
+        })
+        .catch(error => {
+            alert("Network Error!");
+            btn.innerText = "Try Again";
+            btn.disabled = false;
+        });
+    }
+
+    function closePayment() {
+        document.getElementById("paymentModal").style.display = "none";
+    }
+
+    function calculateDays(start, end) {
+        if(!start || !end) return 1; 
+        var parts1 = start.split('/');
+        var parts2 = end.split('/');
+        // Date format: DD/MM/YYYY
+        var d1 = new Date(parts1[2], parts1[1] - 1, parts1[0]);
+        var d2 = new Date(parts2[2], parts2[1] - 1, parts2[0]);
+        var timeDiff = d2.getTime() - d1.getTime();
+        var daysDiff = timeDiff / (1000 * 3600 * 24); 
+        return daysDiff > 0 ? Math.ceil(daysDiff) : 1;
+    }
+</script>
+
+</body>
+</html>

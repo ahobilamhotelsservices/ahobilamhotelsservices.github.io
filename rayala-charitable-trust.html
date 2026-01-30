@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahobilam Hotels & Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <img src="images/logo.png" alt="Ahobilam Logo" class="site-logo">
+        </div>
+
+        <nav class="nav-links" id="navMenu">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="hotels.html">HOTELS</a></li>
+                <li><a href="#about">ABOUT AHOBILAM</a></li>
+                <li><a href="#temples">TEMPLE TIMINGS</a></li>
+                <li><a href="#blogs">BLOGS</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <a href="account.html" class="account-btn">
+                <svg class="user-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="btn-text">MY ACCOUNT</span>
+            </a>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hotel-header-section">
+        <div class="container centered-container">
+            <a href="hotels.html" class="back-link-simple">← Back to Hotels</a>
+            <h1 class="hotel-main-title">Rayala Charitable Trust</h1>
+            <p class="hotel-sub-text">📍 Near Main Temple, Diguva Ahobilam • 🏢 Nityannadana Satram</p>
+        </div>
+    </div>
+
+    <div class="main-gallery-section">
+        <div class="gallery-grid">
+            <div class="big-img-wrapper" onclick="openModal('hotel1.jpg')">
+                <img src="hotel1.jpg" alt="Building View" class="g-img main">
+            </div>
+            
+            <div class="side-imgs">
+                <div class="small-img-wrapper" onclick="openModal('rct-inside.jpg')">
+                    <img src="rct hotel/rct-inside.jpg" alt="Side View" class="g-img">
+                </div>
+                <div class="small-img-wrapper" onclick="openModal('rct-carparking.jpg')">
+                    <img src="rct hotel/rct-carparking.jpg" alt="Reception View" class="g-img">
+                    <div class="overlay-text">+ See All</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("img01");
+            modal.style.display = "flex"; 
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+    </script>
+
+    <div class="amenities-section">
+        <div class="container">
+            <h2 class="section-title">Amenities & Facilities</h2>
+            
+            <div class="amenities-grid">
+                <div class="amenity-item">
+                    <span class="am-icon">🍽️</span>
+                    <span>Lunch & Dinner (Annadanam)</span>
+                </div>
+                <div class="amenity-item">
+                    <span class="am-icon">🚗</span>
+                    <span>Spacious Car Parking</span>
+                </div>
+                <div class="amenity-item">
+                    <span class="am-icon">🛗</span>
+                    <span>Lift Facility</span>
+                </div>
+                <div class="amenity-item">
+                    <span class="am-icon">📶</span>
+                    <span>Free Wi-Fi</span>
+                </div>
+                <div class="amenity-item">
+                    <span class="am-icon">📺</span>
+                    <span>TV in Rooms</span>
+                </div>
+                <div class="amenity-item">
+                    <span class="am-icon">💧</span>
+                    <span>RO Drinking Water</span>
+                </div>
+                <div class="amenity-item">
+                    <span class="am-icon">🚿</span>
+                    <span>Hot Water Available</span>
+                </div>
+                <div class="amenity-item">
+                    <span class="am-icon">⚡</span>
+                    <span>24/7 Power Backup</span>
+                </div>
+                <div class="amenity-item">
+                    <span class="am-icon">📹</span>
+                    <span>CCTV Surveillance</span>
+                </div>
+                <div class="amenity-item">
+                    <span class="am-icon">❄️</span>
+                    <span>AC Rooms Available</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="rooms-container">
+    <h2 class="section-title">Select Your Room</h2>
+
+    <div class="room-row">
+        <div class="room-left-img" onclick="openRoomGallery('nonac')">
+            <img src="rct hotel/rct-non-ac1.jpg" alt="Non AC Room">
+            <div class="photos-badge">📷 View Photos</div>
+        </div>
+        
+        <div class="room-mid-details">
+            <h3>Non-AC Double Bed</h3>
+            <p class="room-desc">Simple room with attached western toilet. Best for couples.</p>
+            <div class="features-list">
+                <span>Attached Bathroom</span>
+                <span>2 single-cots</span>
+                <span>Daily Cleaning</span>
+            </div>
+        </div>
+
+        <a href="javascript:void(0)" class="room-right-price-btn" onclick="openBookingModal('Rayala charitable trust', 'non-ac')">
+            <span class="price-txt">₹700</span>
+            <span class="book-txt">Book Now ></span>
+        </a>
+    </div>
+
+    <div class="room-row">
+        <div class="room-left-img" onclick="openRoomGallery('ac')">
+            <img src="rct hotel/rct-ac1.jpg" alt="AC Room">
+            <div class="photos-badge">📷 View Photos</div>
+        </div>
+
+        <div class="room-mid-details">
+            <h3>AC Double Bed</h3>
+            <p class="room-desc">Comfortable AC room with TV and Geyser facility.</p>
+            <div class="features-list">
+                <span>AC Available</span>
+                <span>Western Toilet</span>
+                <span>TV Included</span>
+                <span>Geyser</span>
+            </div>
+        </div>
+
+        <a href="javascript:void(0)" class="room-right-price-btn" onclick="openBookingModal('Rayala Chritable Trust','AC-2Bed-room',10)">
+            <span class="price-txt">₹1,200</span>
+            <span class="book-txt">Book Now ></span>
+        </a>
+    </div>
+
+    <div class="room-row">
+        <div class="room-left-img" onclick="openRoomGallery('family')">
+            <img src="rct hotel/rct-3bed-1.jpg" alt="3 Bed Room">
+            <div class="photos-badge">📷 View Photos</div>
+        </div>
+
+        <div class="room-mid-details">
+            <h3>3-Bed AC Family Room</h3>
+            <p class="room-desc">Spacious room for small families with extra bed.</p>
+            <div class="features-list">
+                <span>For 3 Persons</span>
+                <span>AC & TV</span>
+                <span>Attached Bath</span>
+                <span>Extra Space</span>
+            </div>
+        </div>
+
+        <a href="javascript:void(0)" class="room-right-price-btn" onclick="openBookingModal('Rayala Chritable Trust','3-Bed-room',2)">
+            <span class="price-txt">₹1,500</span>
+            <span class="book-txt">Book Now ></span>
+        </a>
+    </div>
+</div>
+
+<div id="roomGalleryModal" class="gallery-modal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; flex-direction:column;">
+    <span onclick="closeRoomGallery()" style="position:absolute; top:20px; right:35px; color:#fff; font-size:40px; cursor:pointer;">&times;</span>
+    <div class="gallery-content" style="max-width:80%; text-align:center;">
+        <img id="galleryImage" src="" style="max-width:100%; max-height:80vh; border:3px solid #fff;">
+        <div style="margin-top:20px;">
+            <button onclick="changeSlide(-1)" style="padding:10px 20px; cursor:pointer;">❮ Prev</button>
+            <button onclick="changeSlide(1)" style="padding:10px 20px; cursor:pointer;">Next ❯</button>
+        </div>
+        <p id="galleryCaption" style="color:#fff; margin-top:10px; font-size:18px;"></p>
+    </div>
+</div>
+
+   <script>
+        // Existing Mobile Menu Function
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
+
+        // --- NEW ROOM GALLERY LOGIC ---
+        
+        // 1. రూమ్ ఫోటోల డేటా (ఇక్కడ మీ ఫోటోలు మార్చుకోవచ్చు)
+        const roomPhotos = {
+            'nonac': [
+                { src: 'rct hotel/rct-non-ac1.jpg', desc: 'Main Bedroom View' },
+                { src: 'rct hotel/rct-non-ac2.jpg', desc: 'Entrance View' },
+                { src: 'rct hotel/rct-non-ac3.jpg', desc: 'Attached Bathroom' }
+            ],
+            'ac': [
+                { src: 'rct hotel/rct-ac1.jpg', desc: 'AC Bedroom - Front View' },
+                { src: 'rct hotel/rct-ac2.jpg', desc: 'Clean Washroom' },
+                { src: 'rct hotel/rct-ac3.jpg', desc: 'main Room' }
+            ],
+            'family': [
+                { src: 'rct hotel/rct-3bed-1.jpg', desc: 'Spacious 3-Bed Room' },
+                { src: 'rct hotel/rct-3bed-2.jpg', desc: 'Bathroom' },
+                { src: 'rct hotel/rct-3bed-3.jpg', desc: 'Main Bedroom' }
+            ]
+        };
+
+        let currentRoomType = '';
+        let currentIndex = 0;
+
+        // గ్యాలరీ ఓపెన్ చేయడానికి
+        function openRoomGallery(type) {
+            currentRoomType = type;
+            currentIndex = 0;
+            updateGalleryImage();
+            document.getElementById("roomGalleryModal").style.display = "flex";
+        }
+
+        // గ్యాలరీ క్లోజ్ చేయడానికి
+        function closeRoomGallery() {
+            document.getElementById("roomGalleryModal").style.display = "none";
+        }
+
+        // Next / Previous Buttons
+        function changeSlide(direction) {
+            let totalImages = roomPhotos[currentRoomType].length;
+            currentIndex += direction;
+
+            if (currentIndex >= totalImages) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = totalImages - 1;
+
+            updateGalleryImage();
+        }
+
+        // ఇమేజ్ మార్చడానికి
+        function updateGalleryImage() {
+            let imgData = roomPhotos[currentRoomType][currentIndex];
+            document.getElementById("galleryImage").src = imgData.src;
+            document.getElementById("galleryCaption").innerText = imgData.desc + ` (${currentIndex + 1}/${roomPhotos[currentRoomType].length})`;
+        }
+    </script>
+
+    <div class="info-terms-section">
+        <div class="container">
+            <div class="info-grid">
+                
+                <div class="info-box location-box">
+                    <h3 class="info-title">📍 Distances & Location</h3>
+                    <ul class="info-list">
+                        <li>
+                            <span class="icon">🛕</span>
+                            <span><strong>Main Temple:</strong> 400 Meters (Walkable)</span>
+                        </li>
+                        <li>
+                            <span class="icon">🚌</span>
+                            <span><strong>Bus Stand:</strong> 200 Meters (5 Mins Walk)</span>
+                        </li>
+                        <li>
+                            <span class="icon">⛰️</span>
+                            <span><strong>Eguva Ahobilam:</strong> 8 KM (By Auto/Bus)</span>
+                        </li>
+                        <li>
+                            <span class="icon">🏙️</span>
+                            <span><strong>Allagadda:</strong> 25 KM</span>
+                        </li>
+                        <li>
+                            <span class="icon">🏥</span>
+                            <span><strong>Nandyal Station:</strong> 65 KM</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-box terms-box">
+                    <h3 class="info-title">📜 Accommodation Information</h3>
+                    <ul class="terms-list">
+                        <li>🕒 <strong>Check-in / Check-out:</strong> 24 Hours</li>
+                        <li>🆔 <strong>ID Proof:</strong> Aadhaar Card is Mandatory for all guests.</li>
+                        <li>🚫 <strong>Prohibited:</strong> Smoking & Alcohol strictly not allowed.</li>
+                        <li>🚿 <strong>Hot Water:</strong> Available from 5:00 AM to 9:00 AM only.</li>
+                        <li>🔒 <strong>Main Gate:</strong> Closes at 10:00 PM for security.</li>
+                        <li>⚠️ <strong>Note:</strong> Unmarried couples are not allowed.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="legal-info-section">
+        <div class="container">
+            <div class="legal-grid single-box">
+                
+                <div class="legal-box">
+                    <h3 class="legal-title">Terms & Conditions</h3>
+                    <div class="terms-scroll-area">
+                        <ol class="terms-ol">
+                            <li>All guests must bring a valid government ID proof (Aadhar Card/Driving License/Passport) at the time of check-in.</li>
+                            <li>Single Guest or Unmarried couples are not allowed.</li>
+                            <li>Guests staying in the same city are not allowed.</li>
+                            <li>Pets, outside food/alcohol, and non-veg food are strictly not allowed inside the premises.</li>
+                            <li>Standard check-in and check-out times must be strictly followed. Early check-in is subject to availability and may be chargeable.</li>
+                            <li>Accommodation management can change or stop providing facilities without notice. In that case, the website is not liable.</li>
+                            <li>Hot water, TV, and AC are subject to availability and electricity supply.</li>
+                        </ol>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-box about-box">
+    <img src="foter-logo.png" alt="Ahobilam Hotels Logo" class="footer-logo">
+    <p>Our mission is to provide excellent accommodation and service to the devotees visiting the holy abode of Ahobilam Narasimha Swamy.</p>
+</div>
+
+        <div class="footer-box links-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#hotels">Hotels</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box policies-box">
+            <h3>Policies</h3>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Return & Refund Policy</a></li>
+                <li><a href="#">Guest Policy</a></li>
+                <li><a href="#">Booking Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box contact-box">
+            <h3>Contact Us</h3>
+            <p><strong>Email:</strong><br>
+               <a href="mailto:ahobilamhotelsservices@gmail.com" style="font-size: 0.9rem;">ahobilamhotelsservices@gmail.com</a>
+            </p>
+            <p style="margin-top: 15px;"><strong>Address:</strong><br>
+               Ahobilam(V), Allagadda(M),<br>
+               Nandyala - 518543, AP.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Ahobilam Hotels & Services. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<div id="bookingModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; padding: 10px; backdrop-filter: blur(5px);">
+
+    <div class="modal-content" style="background-color: #fff; padding: 25px; border-radius: 15px; width: 100%; max-width: 450px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; animation: slideDown 0.3s ease-out; max-height: 90vh; overflow-y: auto;">
+        
+        <span onclick="closeBookingModal()" style="position: absolute; right: 20px; top: 15px; font-size: 28px; font-weight: bold; color: #888; cursor: pointer; transition: 0.3s;">&times;</span>
+        
+        <h2 style="color: #8B0000; text-align: center; margin-top: 0; margin-bottom: 20px; font-family: sans-serif;">Complete Booking</h2>
+        
+        <form onsubmit="handleBooking(event)">
+            <input type="hidden" id="selectedHotel">
+            <input type="hidden" id="selectedRoomType">
+
+            <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                <div style="flex: 1;">
+                    <label style="font-size: 12px; font-weight: bold; color:#555;">Check-In</label>
+                    <input type="datetime-local" id="checkIn" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 13px; box-sizing: border-box; background: #f9f9f9;">
+                </div>
+                <div style="flex: 1;">
+                    <label style="font-size: 12px; font-weight: bold; color:#555;">Check-Out</label>
+                    <input type="datetime-local" id="checkOut" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 13px; box-sizing: border-box; background: #f9f9f9;">
+                </div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 12px; font-weight: bold; color:#555;">Number of Rooms</label>
+                <select id="roomsCount" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; box-sizing: border-box; background: #fff;">
+                    <option value="1">1 Room</option>
+                </select>
+            </div>
+
+            <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                <div style="flex: 1;">
+                    <label style="font-size: 12px; font-weight: bold; color:#555;">Adults</label>
+                    <input type="number" id="adults" value="2" min="1" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                </div>
+                <div style="flex: 1;">
+                    <label style="font-size: 12px; font-weight: bold; color:#555;">Children</label>
+                    <input type="number" id="children" value="0" min="0" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                </div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 12px; font-weight: bold; color:#555;">Mobile Number</label>
+                <input type="tel" id="userPhone" placeholder="10 digit number" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; box-sizing: border-box;">
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label style="font-size: 12px; font-weight: bold; color:#555;">Email ID (Optional)</label>
+                <input type="email" id="userEmail" placeholder="example@gmail.com" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; box-sizing: border-box;">
+            </div>
+
+            <p style="background-color: #fff3cd; color: #856404; padding: 10px; font-size: 12px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #ffeeba; text-align: center;">
+                ⚠️ Note: Original Aadhar Card is mandatory at check-in.
+            </p>
+
+            <button type="submit" style="width: 100%; background: linear-gradient(to right, #8B0000, #a00000); color: white; padding: 14px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(139, 0, 0, 0.3);">
+                Proceed to My Account
+            </button>
+
+        </form>
+    </div>
+</div>
+
+<input type="hidden" id="selectedHotel">
+<input type="hidden" id="selectedRoomType">
+
+<script>
+    // 1. Open Booking Form with Room Limits
+// ఇక్కడ 'totalRooms' అనే కొత్త ఆప్షన్ యాడ్ చేసాము
+function openBookingModal(hotelName, roomType, totalRooms) {
+    var modal = document.getElementById("bookingModal");
+    if (modal) {
+        modal.style.display = "flex"; // మొబైల్ డిజైన్ కోసం flex వాడండి
+        
+        // హోటల్ పేరు, రూమ్ పేరు సెట్ చేయడం
+        document.getElementById("selectedHotel").value = hotelName;
+        document.getElementById("selectedRoomType").value = roomType;
+
+        // 👇 అసలైన మ్యాజిక్ ఇక్కడే జరుగుతుంది (Dropdown Logic) 👇
+        var roomSelect = document.getElementById("roomsCount");
+        roomSelect.innerHTML = ""; // పాత ఆప్షన్స్ క్లియర్ చేస్తున్నాం
+
+        // లూప్ తిప్పి, ఎన్ని రూమ్స్ ఉంటే అవే నంబర్లు చూపిస్తున్నాం
+        for (var i = 1; i <= totalRooms; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i + " Room" + (i > 1 ? "s" : ""); // 1 Room, 2 Rooms...
+            roomSelect.appendChild(option);
+        }
+    }
+}
+
+    // 2. Function to close the booking form
+    function closeBookingModal() {
+        document.getElementById("bookingModal").style.display = "none";
+    }
+
+    // 3. Function to send data to Google Sheet (Final Code)
+    // 3. డేటాను గూగుల్ షీట్‌కి మరియు మెయిల్‌కి పంపే ఫంక్షన్ (Final Corrected Code)
+    function handleBooking(event) {
+        event.preventDefault();
+        
+        // బటన్ టెక్స్ట్ మార్చడం (యూజర్‌కి ప్రాసెస్ అవుతుందని తెలియడానికి)
+        var submitBtn = event.target.querySelector("button[type='submit']");
+        if(submitBtn) submitBtn.innerText = "Processing...";
+        
+        // 1. ఫామ్ నుండి వివరాలు తీసుకోవడం
+        var hotel = document.getElementById("selectedHotel") ? document.getElementById("selectedHotel").value : "Unknown Hotel";
+        var roomType = document.getElementById("selectedRoomType") ? document.getElementById("selectedRoomType").value : "General";
+        var phone = document.getElementById("userPhone").value;
+        
+        // 👇 ఈమెయిల్ తీసుకోవడం (Safety Check తో)
+        var emailInput = document.getElementById("userEmail");
+        var email = emailInput ? emailInput.value : ""; 
+
+        var checkIn = document.getElementById("checkIn").value;
+        var checkOut = document.getElementById("checkOut").value;
+        var rooms = document.getElementById("roomsCount").value;
+        var adults = "2"; // Default
+        var children = "0"; // Default
+
+        // 🔴 మీ కొత్త లింక్ (New Script URL)
+        var scriptURL = "https://script.google.com/macros/s/AKfycbys353KwMf8R4S6zZYBYzIvdVo0dczaXHMLd4HvjFbUYxpokJYS-RzDBx3u5bBd78oh/exec";
+
+        // 2. URL తయారు చేయడం (action=book మరియు email ని కలుపుతున్నాం)
+        var finalURL = scriptURL + 
+                       "?action=book" + 
+                       "&hotel=" + encodeURIComponent(hotel) + 
+                       "&roomType=" + encodeURIComponent(roomType) + 
+                       "&email=" + encodeURIComponent(email) +  // ✅ ఇదిగోండి, ఇక్కడ ఈమెయిల్ యాడ్ చేశాను
+                       "&phone=" + phone + 
+                       "&checkIn=" + checkIn + 
+                       "&checkOut=" + checkOut + 
+                       "&rooms=" + rooms + 
+                       "&adults=" + adults + 
+                       "&children=" + children;
+
+        // 3. డేటా పంపడం
+        fetch(finalURL, {
+            method: 'GET',
+            mode: 'no-cors'
+        })
+        .then(() => {
+            alert("Booking Request Sent! \nConfirmation mail sent to your email.");
+            // సక్సెస్ అయ్యాక అకౌంట్ పేజీకి వెళ్తుంది
+            window.location.href = "account.html?phone=" + phone; 
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert("Network Error. Please try again.");
+            if(submitBtn) submitBtn.innerText = "Proceed";
+        });
+    }
+</script>
+
+</body>
+</html>

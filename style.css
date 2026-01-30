@@ -25,7 +25,7 @@ body { font-family: 'Poppins', sans-serif; }
 /* Hero Section - Image & Overlay */
 .hero-section {
     height: 90vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('ahobilam-main-bg.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/ahobilam-main-bg.jpg') no-repeat center center/cover;
     display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 20px;
 }
 .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; margin-bottom: 15px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
@@ -1092,5 +1092,634 @@ footer.main-footer a:hover {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
 
+/* --- CONTAINER ALIGNMENT --- */
+.container { 
+    max-width: 1000px; /* వెడల్పు తగ్గించాం, సెంటర్లో బాగుంటుంది */
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+.centered-container { text-align: center; } /* టైటిల్ సెంటర్ చేయడానికి */
+
+/* --- HOTEL TITLE SECTION --- */
+.hotel-header-section {
+    background-color: #fff3e0;
+    padding: 20px 0; /* హైట్ తగ్గించాం */
+    border-bottom: 1px solid #ffe0b2;
+}
+.back-link-simple { 
+    text-decoration: none; color: #d32f2f; font-weight: 600; 
+    font-size: 0.9rem; display: inline-block; margin-bottom: 5px;
+}
+.hotel-main-title { 
+    font-family: 'Playfair Display', serif; color: #4a0404; 
+    font-size: 2rem; margin: 5px 0; 
+}
+.hotel-sub-text { color: #666; font-size: 0.95rem; }
+
+/* --- PHOTO GALLERY SECTION --- */
+.main-gallery-section { 
+    max-width: 1000px; /* కంటైనర్ సైజు తగ్గించాం */
+    margin: 20px auto; /* పైన కింద గ్యాప్ */
+    padding: 0 20px; 
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 60% 39%; /* పక్క పక్కన */
+    gap: 1%;
+    height: 300px; /* ఇంతకు ముందు 380px ఉండేది, ఇప్పుడు 300px (చిన్నది చేశాం) */
+}
+
+/* ఇమేజ్ బాక్సులు */
+.big-img-wrapper, .small-img-wrapper {
+    width: 100%; height: 100%;
+    border-radius: 10px; overflow: hidden;
+    position: relative; cursor: pointer;
+}
+
+.side-imgs { 
+    display: flex; flex-direction: column; 
+    justify-content: space-between; height: 100%; 
+}
+.small-img-wrapper { height: 49%; } /* సగం హైట్ */
+
+.g-img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    transition: transform 0.3s;
+}
+.g-img:hover { transform: scale(1.05); } /* మౌస్ పెడితే జూమ్ అవుతుంది */
+
+.overlay-text {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); color: white; 
+    font-weight: bold; font-size: 1.1rem;
+    display: flex; justify-content: center; align-items: center;
+}
+
+/* --- POPUP MODAL (ZOOM) STYLE - FIXED --- */
+.modal {
+    display: none; /* మొదట్లో కనిపించదు */
+    position: fixed; 
+    z-index: 2000;
+    left: 0; top: 0; 
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.92); /* ఇంకాస్త డార్క్ బ్యాక్‌గ్రౌండ్ */
+    justify-content: center; 
+    align-items: center;
+    backdrop-filter: blur(5px); /* వెనుక ఉన్నది బ్లర్ అవుతుంది */
+}
+
+.modal-content {
+    max-width: 85%; 
+    max-height: 90vh; /* స్క్రీన్ హైట్ లో 90% మాత్రమే తీసుకుంటుంది */
+    border-radius: 4px; 
+    /* పాత వైట్ గ్లో తీసేసి, సింపుల్ షాడో పెట్టాను */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+    border: 2px solid #fff; /* సన్నని వైట్ బోర్డర్ */
+    object-fit: contain; /* ఫోటో సాగకుండా కరెక్ట్ గా కనిపిస్తుంది */
+    animation: zoomIn 0.3s ease;
+}
+
+/* క్లోజ్ బటన్ (X) */
+.close-btn {
+    position: absolute; 
+    top: 20px; right: 40px;
+    color: #f1f1f1; 
+    font-size: 45px; 
+    font-weight: 300; /* మరీ లావుగా లేకుండా సన్నగా */
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2001;
+}
+
+.close-btn:hover {
+    color: #bbb;
+    transform: scale(1.1);
+}
+
+/* జూమ్ యానిమేషన్ */
+@keyframes zoomIn { 
+    from {transform: scale(0.8); opacity: 0;} 
+    to {transform: scale(1); opacity: 1;} 
+}
+
+/* మొబైల్ లో క్లోజ్ బటన్ అడ్జస్ట్మెంట్ */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+        max-height: 80vh;
+        border: none; /* మొబైల్ లో బోర్డర్ అవసరం లేదు */
+    }
+    .close-btn {
+        top: 10px; right: 20px;
+        font-size: 35px;
+    }
+}
+
+
+/* --- MOBILE RESPONSIVE (Fixes) --- */
+@media (max-width: 768px) {
+    .container, .main-gallery-section { padding: 0 15px; } /* ప్యాడింగ్ అడ్జస్ట్మెంట్ */
+    
+    .hotel-main-title { font-size: 1.6rem; } /* టైటిల్ సైజు తగ్గించాం */
+    
+    .gallery-grid { 
+        grid-template-columns: 1fr; /* ఒకదాని కింద ఒకటి */
+        height: auto; gap: 10px; 
+    }
+    
+    .big-img-wrapper { height: 200px; } /* మొబైల్ లో పెద్ద ఫోటో హైట్ */
+    
+    .side-imgs { 
+        flex-direction: row; /* చిన్న ఫోటోలు పక్క పక్కన */
+        height: 100px; gap: 10px; 
+    }
+    .small-img-wrapper { height: 100%; } /* హైట్ ఫిక్స్ */
+}
+/* --- GLOBAL RESET --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background-color: #fdfbf7; color: #333; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.centered-container { text-align: center; }
+
+/* --- 1. HEADER STYLES --- */
+.main-header {
+    background: #FFF8DC; 
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 5%; border-bottom: 3px solid #D4AF37;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.site-logo { height: 60px; mix-blend-mode: multiply; }
+.nav-links ul { display: flex; list-style: none; gap: 25px; }
+.nav-links a { text-decoration: none; color: #4a0404; font-weight: 700; font-size: 14px; text-transform: uppercase; }
+.nav-links a:hover { color: #ff9800; }
+.header-right { display: flex; align-items: center; gap: 15px; }
+.account-btn { background: #4a0404; color: #D4AF37; padding: 8px 15px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 13px; }
+.mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.mobile-toggle span { width: 25px; height: 3px; background: #4a0404; }
+
+/* --- 2. HOTEL TITLE SECTION --- */
+.hotel-header-section {
+    background-color: #fff3e0; padding: 30px 0; border-bottom: 1px solid #ffe0b2;
+}
+.back-link-simple { text-decoration: none; color: #d32f2f; font-weight: 600; font-size: 0.9rem; display: inline-block; margin-bottom: 5px; }
+.hotel-main-title { font-family: 'Playfair Display', serif; color: #4a0404; font-size: 2.2rem; margin: 5px 0; }
+.hotel-sub-text { color: #666; font-size: 1rem; font-weight: 500; }
+
+/* --- 3. PHOTO GALLERY SECTION --- */
+.main-gallery-section { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+.gallery-grid {
+    display: grid; grid-template-columns: 60% 39%; gap: 1%; height: 320px;
+}
+.big-img-wrapper, .small-img-wrapper { width: 100%; height: 100%; border-radius: 10px; overflow: hidden; position: relative; cursor: pointer; }
+.side-imgs { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+.small-img-wrapper { height: 49%; }
+.g-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.g-img:hover { transform: scale(1.05); }
+.overlay-text { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); color: white; font-weight: bold; font-size: 1.1rem; display: flex; justify-content: center; align-items: center; }
+
+/* --- 4. AMENITIES SECTION (Grid Fix) --- */
+.amenities-section {
+    background-color: #ffffff;
+    padding: 40px 0;
+    
+    /* ఇది ఫోటోల కిందకి నెడుతుంది */
+    margin-top: 50px; 
+    
+    border-top: 1px solid #eee; border-bottom: 1px solid #eee;
+    position: relative; z-index: 10; clear: both;
+}
+.section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #4a0404; margin-bottom: 30px; text-align: center; position: relative; }
+.section-title::after { content: ''; display: block; width: 60px; height: 3px; background: #D4AF37; margin: 10px auto 0; border-radius: 2px; }
+
+/* గ్రిడ్ డిజైన్ (ఇది ముఖ్యం) */
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.amenity-item { 
+    background: #fdfbf7; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 10px; 
+    padding: 15px 20px; 
+    display: flex; align-items: center; gap: 15px; 
+    transition: 0.3s; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+}
+.amenity-item:hover { transform: translateY(-3px); border-color: #D4AF37; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.am-icon { font-size: 1.6rem; }
+.amenity-item span:last-child { font-weight: 600; color: #444; font-size: 0.95rem; }
+
+/* --- POPUP MODAL --- */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.92); justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+.modal-content { max-width: 85%; max-height: 90vh; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 2px solid #fff; object-fit: contain; animation: zoomIn 0.3s ease; }
+.close-btn { position: absolute; top: 20px; right: 40px; color: #f1f1f1; font-size: 45px; font-weight: 300; cursor: pointer; z-index: 2001; }
+@keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .nav-links { display: none; position: absolute; top: 80px; left: 0; width: 100%; background: #FFF8DC; text-align: center; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+    .nav-links.active { display: flex; flex-direction: column; gap: 15px; }
+    .mobile-toggle { display: flex; }
+    
+    .gallery-grid { grid-template-columns: 1fr; height: auto; gap: 10px; }
+    .big-img-wrapper { height: 220px; }
+    .side-imgs { flex-direction: row; height: 120px; gap: 10px; }
+    .small-img-wrapper { height: 100%; }
+    
+    .amenities-section { margin-top: 30px; }
+    .amenities-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .amenity-item { flex-direction: column; text-align: center; padding: 10px; }
+    
+    .modal-content { max-width: 95%; max-height: 80vh; border: none; }
+    .close-btn { top: 10px; right: 20px; font-size: 35px; }
+}
+/* --- SYSTEM (DESKTOP) FIX ONLY --- */
+/* ఈ కోడ్ కేవలం కంప్యూటర్ లో మాత్రమే పనిచేస్తుంది, మొబైల్ ని మార్చదు */
+
+@media screen and (min-width: 1024px) {
+    
+    /* 1. గ్యాలరీ బాక్స్ హైట్ ని సిస్టమ్ లో పెంచుతున్నాం */
+    .gallery-grid {
+        height: 400px !important; /* ఫోటోలకు ఎక్కువ స్పేస్ */
+        margin-bottom: 50px;
+    }
+
+    /* 2. Amenities సెక్షన్ ని బలవంతంగా కిందకి నెడుతున్నాం */
+    .amenities-section {
+        margin-top: 200px !important; /* 200px కిందకి వెళ్తుంది */
+        position: relative;
+        z-index: 5;
+        padding-top: 40px;
+    }
+}
+/* --- ROOMS LIST DESIGN (UPDATED SIZE) --- */
+.rooms-container {
+    max-width: 1000px; /* వెడల్పు పెంచాను */
+    margin: 0 auto 50px;
+    padding: 0 20px;
+}
+
+.room-row {
+    display: flex; 
+    align-items: center; 
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    padding: 15px; /* ప్యాడింగ్ పెంచాను */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.room-row:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: #ff9800;
+}
+
+/* 1. Left Image (BIGGER on Desktop) */
+.room-left-img {
+    width: 280px; /* సిస్టమ్ లో ఇమేజ్ పెద్దగా ఉంటుంది */
+    height: 180px;
+    flex-shrink: 0;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.room-left-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.3s;
+}
+.room-left-img:hover img { transform: scale(1.1); }
+
+/* "View Photos" Badge */
+.photos-badge {
+    position: absolute; bottom: 10px; right: 10px;
+    background: rgba(0,0,0,0.7); color: white;
+    font-size: 0.8rem; padding: 4px 8px; border-radius: 4px;
+    pointer-events: none;
+}
+
+/* 2. Middle Details */
+.room-mid-details {
+    flex: 1; padding: 0 25px;
+}
+.room-mid-details h3 {
+    margin: 0 0 10px; color: #4a0404; font-size: 1.5rem;
+}
+.room-desc {
+    color: #555; font-size: 0.95rem; margin-bottom: 12px;
+}
+.features-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.features-list span {
+    font-size: 0.9rem; color: #444; background: #fdfbf7;
+    padding: 5px 10px; border-radius: 5px; border: 1px solid #e0e0e0;
+}
+
+/* 3. Right Price Button */
+.room-right-price-btn {
+    text-decoration: none; background-color: #fff8e1;
+    border: 2px solid #ff9800; color: #e65100;
+    padding: 15px 10px; border-radius: 8px;
+    text-align: center; min-width: 140px; /* బటన్ వెడల్పు పెంచాను */
+    display: flex; flex-direction: column; justify-content: center;
+    transition: 0.3s;
+}
+.room-right-price-btn:hover { background-color: #ff9800; }
+.room-right-price-btn:hover .price-txt, 
+.room-right-price-btn:hover .book-txt { color: white; }
+
+.price-txt { font-size: 1.6rem; font-weight: bold; color: #333; margin-bottom: 5px; }
+.book-txt { font-size: 0.9rem; font-weight: bold; text-transform: uppercase; color: #e65100; }
+
+/* --- GALLERY MODAL STYLES --- */
+.gallery-modal {
+    display: none; position: fixed; z-index: 3000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    justify-content: center; align-items: center;
+}
+.gallery-content { text-align: center; width: 90%; max-width: 800px; }
+#galleryImage { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 5px; border: 2px solid white; }
+.close-gallery {
+    position: absolute; top: 20px; right: 40px; color: #fff;
+    font-size: 50px; cursor: pointer;
+}
+.gallery-nav { margin-top: 15px; display: flex; justify-content: center; gap: 20px; }
+.gallery-nav button {
+    background: #ff9800; border: none; color: white; padding: 10px 20px;
+    font-size: 1rem; cursor: pointer; border-radius: 5px;
+}
+.caption-text { color: #ccc; margin-top: 10px; font-size: 1.2rem; }
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .room-row { flex-direction: column; align-items: flex-start; padding: 10px; }
+    .room-left-img { width: 100%; height: 200px; margin-bottom: 15px; }
+    .room-mid-details { padding: 0; margin-bottom: 15px; width: 100%; }
+    .room-mid-details h3 { font-size: 1.3rem; }
+    .room-right-price-btn { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; padding: 12px 20px; }
+    .price-txt { margin-bottom: 0; font-size: 1.4rem; }
+}
+/* --- 6. INFO & TERMS SECTION --- */
+.info-terms-section {
+    background-color: #fdfbf7; /* లైట్ క్రీమ్ బ్యాక్‌గ్రౌండ్ */
+    padding: 50px 0;
+    border-top: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* రెండు పక్క పక్కన (50% - 50%) */
+    gap: 30px;
+}
+
+/* బాక్సులు డిజైన్ */
+.info-box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.info-title {
+    font-family: 'Playfair Display', serif;
+    color: #4a0404;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #D4AF37; /* గోల్డ్ లైన్ */
+    display: inline-block;
+}
+
+/* Location List Styling */
+.info-list {
+    list-style: none;
+}
+.info-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #444;
+}
+.info-list .icon {
+    font-size: 1.4rem;
+    width: 30px;
+    text-align: center;
+}
+
+/* Terms List Styling */
+.terms-list {
+    list-style: none;
+}
+.terms-list li {
+    position: relative;
+    padding-left: 25px; /* బుల్లెట్ పాయింట్ స్పేస్ */
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+.terms-list li::before {
+    content: '•'; /* కస్టమ్ బుల్లెట్ పాయింట్ */
+    color: #D4AF37;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
+.terms-list strong {
+    color: #333;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr; /* మొబైల్ లో ఒకదాని కింద ఒకటి */
+        gap: 20px;
+    }
+    .info-box {
+        padding: 20px;
+    }
+}
+/* --- 6. LEGAL & ACCOMMODATION SECTION --- */
+.legal-info-section {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.legal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* పక్క పక్కన */
+    gap: 40px;
+}
+
+.legal-box {
+    background: #fdfbf7;
+    border: 1px solid #e0e0e0;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.legal-title {
+    font-family: 'Playfair Display', serif;
+    color: #4a0404;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #D4AF37;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Location Details */
+.location-list {
+    list-style: none;
+    padding: 0;
+}
+.location-list li {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #444;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 8px;
+}
+.location-list li strong {
+    color: #333;
+    width: 180px;
+    display: inline-block;
+}
+
+.transport-note {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff3e0;
+    border-left: 4px solid #ff9800;
+    font-size: 0.9rem;
+}
+
+/* Terms & Conditions */
+.terms-scroll-area {
+    max-height: 300px; /* మరీ పొడవు అవ్వకుండా స్క్రోల్ బార్ వస్తుంది */
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* స్క్రోల్ బార్ స్టైలింగ్ */
+.terms-scroll-area::-webkit-scrollbar { width: 5px; }
+.terms-scroll-area::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+
+.terms-ol {
+    padding-left: 20px;
+}
+.terms-ol li {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .legal-grid {
+        grid-template-columns: 1fr; /* మొబైల్ లో ఒకటి కింద ఒకటి */
+    }
+    .location-list li strong {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+/* ఒకటే బాక్స్ ఉన్నప్పుడు అది సెంటర్‌గా రావడానికి */
+.legal-grid.single-box {
+    display: flex;
+    justify-content: center;
+}
+
+.legal-grid.single-box .legal-box {
+    width: 100%;
+    max-width: 800px; /* మరీ వెడల్పు అవ్వకుండా నియంత్రిస్తుంది */
+}
+.hotel-sold-out {
+    position: relative;
+    pointer-events: none;
+}
+
+.hotel-sold-out::after {
+    content: "ALL ROOMS FULL / SOLD OUT";
+    position: absolute;
+    top: 150px; /* బ్యానర్ ఎత్తును ఇక్కడ అడ్జస్ట్ చేయవచ్చు */
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg);
+    background: rgba(211, 47, 47, 0.95);
+    color: white;
+    padding: 15px 30px;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 4px solid white;
+    z-index: 999;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    white-space: nowrap;
+}
+
+.hotel-sold-out .room-row {
+    opacity: 0.3;
+    filter: grayscale(1);
+}
+/* --- BOOKING MODAL STYLES --- */
+.booking-modal {
+    display: none; /* Default hidden */
+    position: fixed; z-index: 4000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center; align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.booking-modal-content {
+    background: white; padding: 30px;
+    border-radius: 15px; width: 90%; max-width: 550px;
+    position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.close-booking {
+    position: absolute; right: 20px; top: 15px;
+    font-size: 28px; cursor: pointer; color: #666;
+}
+
+.modal-title { font-family: 'Playfair Display', serif; color: #4a0404; margin-bottom: 5px; }
+.modal-subtitle { color: #ff9800; font-weight: 600; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.full-width { grid-column: span 2; }
+
+.form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: #333; }
+.form-group input, .form-group select {
+    width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit;
+}
+
+.id-note { font-size: 0.75rem; color: #d32f2f; margin: 20px 0; background: #fff5f5; padding: 10px; border-radius: 5px; }
+
+.proceed-btn {
+    width: 100%; background: #4a0404; color: white; border: none;
+    padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer;
+    font-size: 1rem; transition: 0.3s;
+}
+.proceed-btn:hover { background: #d32f2f; }
+
+@media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .full-width { grid-column: span 1; }
 }
