@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahobilam Yatra Guide - Ahobilam</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .booking-row {
+            display: flex;
+            flex-wrap: wrap; /* ఇది ముఖ్యం: స్థలం లేకపోతే కిందకు వస్తాయి */
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .booking-col {
+            flex: 1;
+            min-width: 130px; /* బాక్సు మరీ చిన్నగా అయిపోకుండా చూస్తుంది */
+        }
+        .booking-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <a href="index.html" style="display: inline-block;">
+                <img src="logo.png" alt="Ahobilam Logo" class="site-logo">
+            </a>
+        </div>
+
+        <nav class="nav-links" id="navMenu">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="hotels.html">HOTELS</a></li>
+                <li><a href="history-of-ahobilam.html">ABOUT AHOBILAM</a></li>
+                <li><a href="Ahobilam-Yatra-Guide.html">TEMPLE TIMINGS</a></li>
+                <li><a href="contact.html" class="active">CONTACT</a></li>
+                <li><a href="#blogs">BLOGS</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <a href="account.html" class="account-btn">
+                <svg class="user-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="btn-text">MY ACCOUNT</span>
+            </a>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <style>
+        /* --- THEME VARIABLES --- */
+        :root {
+            --gold: #D4AF37;
+            --dark-brown: #3e2723;
+            --bg-color: #fdf5e6;
+            --text: #2C3E50;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            margin: 0; padding: 0;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        /* --- HERO BANNER --- */
+        .guide-hero {
+            height: 300px;
+            background: linear-gradient(rgba(62, 39, 35, 0.9), rgba(62, 39, 35, 0.8)), url('ahobilam-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .guide-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin: 0;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .guide-hero p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            color: #ddd;
+            font-weight: 300;
+        }
+
+        /* --- LAYOUT CONTAINER --- */
+        .guide-layout {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            gap: 40px;
+        }
+
+        /* --- SIDEBAR NAV (Desktop) --- */
+        .sidebar-nav {
+            flex: 0 0 250px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--gold);
+        }
+
+        .sidebar-nav h3 {
+            margin-top: 0;
+            color: var(--dark-brown);
+            font-family: 'Playfair Display', serif;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .nav-list { list-style: none; padding: 0; margin: 0; }
+        .nav-list li { margin-bottom: 10px; }
+        
+        .nav-list a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            display: block;
+            padding: 8px 10px;
+            border-radius: 4px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-list a:hover {
+            background-color: #fff8e1;
+            color: var(--dark-brown);
+            padding-left: 15px;
+        }
+
+        /* --- CONTENT STREAM --- */
+        .content-stream { flex: 1; }
+
+        .guide-section {
+            background: #fff;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            scroll-margin-top: 20px; 
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .sec-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--dark-brown);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .sec-num {
+            background: var(--gold);
+            color: #fff;
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fafafa;
+        }
+        .info-table td { padding: 12px; border-bottom: 1px solid #eee; }
+        .info-table td:first-child { font-weight: 600; color: #444; width: 35%; }
+
+        /* Images */
+        .img-box {
+            height: 250px;
+            background: #eee;
+            border-radius: 8px;
+            margin-top: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            border: 2px dashed #ddd;
+        }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Double Image Grid */
+        .double-img-grid {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .img-wrapper {
+            flex: 1;
+            text-align: center;
+        }
+
+        .img-wrapper .img-box {
+            height: 180px; 
+            margin-top: 0;
+            border: 1px solid var(--gold);
+        }
+
+        .img-caption {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--dark-brown);
+            background: #fff8e1;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+
+        .alert-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffa500;
+            padding: 15px;
+            margin: 15px 0;
+            color: #856404;
+            font-size: 0.95rem;
+        }
+
+        /* ========================================= */
+        /* --- MOBILE FIXES (UPDATED) --- */
+        /* ========================================= */
+        @media (max-width: 900px) {
+            
+            .guide-layout { 
+                flex-direction: column; 
+                padding: 0;
+                gap: 0;
+                margin-top: 0;
+            }
+            
+            .guide-hero h1 { font-size: 2.2rem; }
+
+            /* 1. Mobile Menu - NO FLOATING (Normal Flow) */
+            .sidebar-nav {
+                position: relative; /* Normal position */
+                width: 100%;
+                height: auto;
+                background: #fdf5e6; /* Theme BG */
+                border-radius: 0;
+                padding: 15px;
+                border-left: none;
+                border-bottom: 2px solid var(--gold);
+                box-shadow: none;
+                z-index: 1;
+            }
+
+            .sidebar-nav h3 { 
+                display: block; 
+                font-size: 1.2rem; 
+                margin-bottom: 10px;
+                border: none;
+                text-align: center;
+            }
+
+            /* 2. Mobile Menu - GRID LAYOUT (Two Columns) */
+            .nav-list { 
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* Two items per row */
+                gap: 10px; 
+            }
+            
+            .nav-list li { margin: 0; }
+
+            .nav-list a {
+                background: #fff;
+                color: var(--dark-brown);
+                border: 1px solid #e0e0e0;
+                padding: 12px 10px;
+                font-size: 0.9rem;
+                text-align: center;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            }
+            
+            /* Section Styling */
+            .content-stream { padding: 15px; }
+            
+            .guide-section { 
+                padding: 25px 20px; 
+                margin-bottom: 20px;
+                scroll-margin-top: 20px; /* Scroll fix */
+            }
+            
+            .sec-title { font-size: 1.4rem; }
+            
+            /* Mobile Images */
+            .double-img-grid { 
+                flex-direction: column; /* Stack images on mobile */
+                gap: 20px; 
+            }
+            .img-wrapper .img-box { height: 200px; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="guide-hero">
+        <h1>Ahobilam Yatra Guide</h1>
+        <p>A step-by-step journey into the divine Nallamala forest</p>
+    </div>
+
+    <div class="guide-layout">
+        
+        <aside class="sidebar-nav">
+            <h3>📖 Quick Guide Menu</h3>
+            <ul class="nav-list">
+                <li><a href="#arrival">Arrival</a></li>
+                <li><a href="#karanja">Karanja</a></li>
+                <li><a href="#upper">Upper Ahobilam</a></li>
+                <li><a href="#trek">Trek Route</a></li>
+                <li><a href="#ugra">Ugra Sthambam</a></li>
+                <li><a href="#food">Annadhanam</a></li>
+                <li><a href="#jeep">Jeep Safari</a></li>
+                <li><a href="#lower">Lower Temple</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-stream">
+
+            <section id="arrival" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">01</span> Arrival Essentials</h2>
+                <p>Welcome to Ahobilam. Upon entry, please be prepared for the check-posts.</p>
+                <table class="info-table">
+                    <tr><td>Vehicle Fee</td><td>₹150/-</td></tr>
+                    <tr><td>Forest Fee</td><td>₹50/-</td></tr>
+                    <tr><td>Food</td><td>Available from 6:00 AM</td></tr>
+                </table>
+            </section>
+
+            <section id="karanja" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">02</span> Karanja Narasimha</h2>
+                <p>Located on the way to Upper Ahobilam. This is usually the first stop for pilgrims.</p>
+                <div class="alert-box">
+                    ⚠️ <strong>Weekend Note:</strong> Private vehicles might be stopped here. Use the free shuttle bus.
+                </div>
+                <div class="img-box"><img src="karanja1.jpg" alt="Karanja"></div>
+            </section>
+
+            <section id="upper" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">03</span> Upper Ahobilam</h2>
+                <p>The main Eguva Ahobilam temple is a short 10-minute walk from the parking area.</p>
+                <table class="info-table">
+                    <tr><td>Darshan</td><td>7 AM - 1 PM | 2 PM - 7 PM</td></tr>
+                    <tr><td>Special Darshan</td><td>₹100/-</td></tr>
+                    <tr><td>Doli Service</td><td>Available for full trek (₹4000)</td></tr>
+                </table>
+                <div class="img-box"><img src="upper1.jpg" alt="Upper Temple"></div>
+            </section>
+
+            <section id="trek" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">04</span> The Sacred Trek</h2>
+                <p>From the Upper Temple, proceed to Varaha, Jwala, and Malola temples.</p>
+                <ul style="padding-left: 20px;">
+                    <li><strong>Option A:</strong> Right steps -> Malola Temple (Easy).</li>
+                    <li><strong>Option B:</strong> Left bridge -> Jwala Temple (Moderate).</li>
+                </ul>
+                <p><strong>Tip:</strong> Complete the loop: Varaha → Jwala → Malola.</p>
+                
+                <div class="double-img-grid">
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="trek1.jpg" alt="Malola Route"></div>
+                        <span class="img-caption">Malola Route</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="trek2.jpg" alt="Jwala Route"></div>
+                        <span class="img-caption">Jwala Route</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ugra" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">05</span> Ugra Sthambam</h2>
+                <p>The hardest part of the trek. The vertical pillar where the Lord appeared.</p>
+                <div class="alert-box">
+                    🛑 Not recommended for elders or people with health issues. Steep climb.
+                </div>
+                <div class="img-box"><img src="ugra1.jpg" alt="Ugra Sthambam"></div>
+            </section>
+
+            <section id="food" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">06</span> Annadhanam</h2>
+                <p>Free meals are served at various Satrams if you complete Darshan by 12:30 PM.</p>
+                <p><strong>Available at:</strong> Arya Vysya Satram, Brahmana Satram, Nitya Annadhanam.</p>
+            </section>
+
+            <section id="jeep" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">07</span> Jeep Safari</h2>
+                <p>Pavana and Bhargava temples are deep in the forest. You need a local Jeep.</p>
+                <table class="info-table">
+                    <tr><td>Cost</td><td>₹3500/- (Max 6 people)</td></tr>
+                    <tr><td>Time</td><td>2.5 Hours Round Trip</td></tr>
+                </table>
+                <div class="img-box"><img src="jeep.jpg" alt="Jeep"></div>
+            </section>
+
+            <section id="lower" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">08</span> Lower Ahobilam</h2>
+                <p>Visit the Lakshmi Narasimha Swamy temple and the daily Gopuja.</p>
+                <table class="info-table">
+                    <tr><td>Gopuja</td><td>5:50 AM - 6:10 AM</td></tr>
+                    <tr><td>Darshan</td><td>6:30 AM - 1:00 PM | 3:00 PM - 8:00 PM</td></tr>
+                </table>
+                <div class="img-box"><img src="lower1.jpg" alt="Lower Temple"></div>
+            </section>
+
+        </main>
+    </div>
+
+   <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-box about-box">
+    <img src="foter-logo.png" alt="Ahobilam Hotels Logo" class="footer-logo">
+    <p>Our mission is to provide excellent accommodation and service to the devotees visiting the holy abode of Ahobilam Narasimha Swamy.</p>
+</div>
+
+       <div class="footer-box links-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="History-of-Ahobilam.html">History</a></li>
+                <li><a href="hotels.html">Hotels</a></li>
+                <li><a href="contact.html" class="active">CONTACT</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box policies-box">
+            <h3>Policies</h3>
+            <ul>
+                <li><a href="policies.html#privacy">Privacy Policy</a></li>
+                <li><a href="policies.html#terms">Terms & Conditions</a></li>
+                <li><a href="policies.html#refund">Return & Refund Policy</a></li>
+                <li><a href="policies.html#guest">Guest Policy</a></li>
+                <li><a href="policies.html#booking">Booking Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box contact-box">
+            <h3>Contact Us</h3>
+            <p><strong>Email:</strong><br>
+               <a href="mailto:ahobilamhotelsservices@gmail.com" style="font-size: 0.9rem;">ahobilamhotelsservices@gmail.com</a>
+            </p>
+            <p style="margin-top: 15px;"><strong>Address:</strong><br>
+               Ahobilam(V), Allagadda(M),<br>
+               Nandyala - 518543, AP.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Ahobilam Hotels & Services. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padhmashali Nitya Annadhana Satram - Ahobilam</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .booking-row {
+            display: flex;
+            flex-wrap: wrap; /* ఇది ముఖ్యం: స్థలం లేకపోతే కిందకు వస్తాయి */
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .booking-col {
+            flex: 1;
+            min-width: 130px; /* బాక్సు మరీ చిన్నగా అయిపోకుండా చూస్తుంది */
+        }
+        .booking-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+
+    <header class="main-header">
+        <div class="logo-area">
+            <a href="index.html" style="display: inline-block;">
+                <img src="logo.png" alt="Ahobilam Logo" class="site-logo">
+            </a>
+        </div>
+        <nav class="nav-links" id="navMenu">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="hotels.html">HOTELS</a></li>
+                <li><a href="History-of-Ahobilam.html">ABOUT AHOBILAM</a></li>
+                <li><a href="Ahobilam-Yatra-Guide.html">TEMPLE TIMINGS</a></li>
+                <li><a href="Contact.html" class="active">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right">
+            <a href="account.html" class="account-btn">
+                <svg class="user-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="btn-text">MY ACCOUNT</span>
+            </a>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+    
+    <style>
+        /* --- GLOBAL VINTAGE THEME --- */
+        body {
+            background-color: #fdf5e6; /* Old Paper */
+            background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+            color: #2c1e12;
+            font-family: 'Lato', sans-serif;
+            margin: 0; padding: 0;
+            line-height: 1.8;
+            scroll-behavior: smooth; /* స్మూత్ స్క్రోలింగ్ కోసం */
+        }
+
+        .main-header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+
+        /* --- PAGE HEADER --- */
+        .policy-header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background: linear-gradient(to bottom, rgba(139, 0, 0, 0.05), transparent);
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #8b0000;
+            margin-bottom: 10px;
+        }
+
+        .sub-text { font-style: italic; color: #555; }
+
+        /* --- LAYOUT CONTAINER --- */
+        .policy-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            display: flex;
+            gap: 50px;
+            padding: 0 20px;
+        }
+
+        /* --- LEFT SIDEBAR (Sticky Menu) --- */
+        .sidebar {
+            flex: 0.3; /* 30% width */
+            position: sticky;
+            top: 100px; /* పైనుండి ఎంత గ్యాప్ ఉండాలి */
+            height: fit-content;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #d4af37;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .sidebar h3 {
+            font-family: 'Playfair Display', serif;
+            color: #8b0000;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar li { margin-bottom: 15px; }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            border-left: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #8b0000;
+            background: #fdf5e6;
+            border-left: 3px solid #8b0000;
+        }
+
+        /* --- RIGHT CONTENT --- */
+        .content-area {
+            flex: 0.7; /* 70% width */
+        }
+
+        .policy-section {
+            background: #fff;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            border: 1px solid #e0d0b0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            /* స్క్రోల్ అయినప్పుడు హెడర్ వెనుక దాక్కోకుండా ఉండటానికి */
+            scroll-margin-top: 100px; 
+        }
+
+        .policy-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #8b0000;
+            border-bottom: 1px solid #d4af37;
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+
+        .policy-text p { margin-bottom: 15px; color: #444; }
+        .policy-text ul { padding-left: 20px; margin-bottom: 20px; }
+        .policy-text li { margin-bottom: 10px; color: #444; }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .policy-container { flex-direction: column; }
+            .sidebar { position: static; width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="policy-header">
+        <h1 class="main-title">Terms & Policies</h1>
+        <p class="sub-text">Official Guidelines for Ahobilam Hotels & Services</p>
+    </div>
+
+    <div class="policy-container">
+        
+        <aside class="sidebar">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#privacy">🔒 Privacy Policy</a></li>
+                <li><a href="#terms">📜 Terms & Conditions</a></li>
+                <li><a href="#refund">💸 Return & Refund</a></li>
+                <li><a href="#guest">👤 Guest Policy</a></li>
+                <li><a href="#booking">📅 Booking Policy</a></li>
+            </ul>
+        </aside>
+
+        <div class="content-area">
+
+            <section id="privacy" class="policy-section">
+                <h2 class="policy-title">Privacy Policy</h2>
+                <div class="policy-text">
+                    <p>At Ahobilam Hotels & Services, we value your trust and are committed to protecting your personal information.</p>
+                    <ul>
+                        <li><strong>Data Collection:</strong> We collect your Name, Phone Number, and Booking Details solely for reservation purposes.</li>
+                        <li><strong>Usage:</strong> Your contact number is used to send booking confirmations and payment updates via WhatsApp or SMS.</li>
+                        <li><strong>Data Sharing:</strong> We do NOT sell or share your personal data with any third-party advertisers. Your data is shared only with the respective Hotel/Satram management for check-in verification.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="terms" class="policy-section">
+                <h2 class="policy-title">Terms & Conditions</h2>
+                <div class="policy-text">
+                    <p>By using this website and booking a room, you agree to the following terms:</p>
+                    <ul>
+                        <li><strong>ID Proof:</strong> Original Government ID (Aadhar/Driving License) is mandatory for all guests at the time of Check-In.</li>
+                        <li><strong>Right to Admission:</strong> The hotel management reserves the right to deny admission if guests pose a security threat or violate rules.</li>
+                        <li><strong>Prohibited Items:</strong> Alcohol, Smoking, and Non-Vegetarian food are strictly prohibited inside the Satram/Hotel premises as Ahobilam is a sacred Kshetram.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="refund" class="policy-section">
+                <h2 class="policy-title">Return & Refund Policy</h2>
+                <div class="policy-text">
+                    <p>Our cancellation and refund rules are as follows:</p>
+                    <ul>
+                        <li><strong>Cancellation before 48 Hours:</strong> 90% of the advance amount will be refunded.</li>
+                        <li><strong>Cancellation before 24 Hours:</strong> 50% of the advance amount will be refunded.</li>
+                        <li><strong>Cancellation within 24 Hours:</strong> No refund will be provided.</li>
+                        <li><strong>Refund Processing:</strong> Refunds will be processed within 5-7 working days via UPI or Bank Transfer.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="guest" class="policy-section">
+                <h2 class="policy-title">Guest Policy</h2>
+                <div class="policy-text">
+                    <ul>
+                        <li><strong>Unmarried Couples:</strong> We do not allow unmarried couples. Valid ID proof proving marriage (same surname or marriage certificate photo) may be asked.</li>
+                        <li><strong>Local ID:</strong> Guests with local IDs (from the same city/town) may not be allowed to book rooms.</li>
+                        <li><strong>Conduct:</strong> Guests are expected to maintain silence and respect the spiritual ambiance of the location.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="booking" class="policy-section">
+                <h2 class="policy-title">Booking Policy</h2>
+                <div class="policy-text">
+                    <ul>
+                        <li><strong>Confirmation:</strong> Your booking is confirmed only after the payment of the advance amount.</li>
+                        <li><strong>Check-In/Out:</strong> Standard Check-In time is 24 Hours (from the time of arrival) in most Satrams, but please verify specific hotel rules.</li>
+                        <li><strong>Advance Payment:</strong> 100% of the booking amount must be paid to secure the reservation during peak seasons/festivals.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-box about-box">
+    <img src="foter-logo.png" alt="Ahobilam Hotels Logo" class="footer-logo">
+    <p>Our mission is to provide excellent accommodation and service to the devotees visiting the holy abode of Ahobilam Narasimha Swamy.</p>
+</div>
+
+        <div class="footer-box links-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="History-of-Ahobilam.html">History</a></li>
+                <li><a href="hotels.html">Hotels</a></li>
+                <li><a href="Contact.html" class="active">CONTACT</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box policies-box">
+            <h3>Policies</h3>
+            <ul>
+                <li><a href="policies.html#privacy">Privacy Policy</a></li>
+                <li><a href="policies.html#terms">Terms & Conditions</a></li>
+                <li><a href="policies.html#refund">Return & Refund Policy</a></li>
+                <li><a href="policies.html#guest">Guest Policy</a></li>
+                <li><a href="policies.html#booking">Booking Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box contact-box">
+            <h3>Contact Us</h3>
+            <p><strong>Email:</strong><br>
+               <a href="mailto:ahobilamhotelsservices@gmail.com" style="font-size: 0.9rem;">ahobilamhotelsservices@gmail.com</a>
+            </p>
+            <p style="margin-top: 15px;"><strong>Address:</strong>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Ahobilam Hotels & Services. All Rights Reserved.</p>
+    </div>
+</footer>
+    <script>
+        function toggleMenu() { document.getElementById("navMenu").classList.toggle("active"); }
+    </script>
+</body>
+</html>

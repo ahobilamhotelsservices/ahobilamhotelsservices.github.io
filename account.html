@@ -12,11 +12,13 @@
         button { background: #8B0000; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; transition: 0.3s; }
         button:hover { background: #a00000; }
         
-        /* Status Card Styling */
-        .status-card { display: none; margin-top: 20px; text-align: left; background: #fff8e1; padding: 20px; border-left: 5px solid #ffcc00; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        /* Status Card Styling - Updated for Multiple Cards */
+        #bookingsContainer { margin-top: 20px; }
+        .status-card { display: block; margin-bottom: 20px; text-align: left; background: #fff8e1; padding: 20px; border-left: 5px solid #ffcc00; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); animation: fadeIn 0.5s; }
         .status-item { margin-bottom: 10px; font-size: 15px; border-bottom: 1px dashed #ddd; padding-bottom: 5px; }
         .status-item strong { color: #555; }
         .status-value { font-weight: bold; color: #000; float: right; }
+        .booking-header { color: #8B0000; margin-top: 0; border-bottom: 2px solid #8B0000; padding-bottom: 5px; margin-bottom: 15px; font-size: 18px; }
         
         /* Payment Section */
         .pay-section { display: none; margin-top: 15px; text-align: center; border-top: 1px solid #eee; padding-top: 15px; }
@@ -27,6 +29,10 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .home-link { display: block; margin-top: 20px; color: #8B0000; text-decoration: none; }
     </style>
@@ -42,27 +48,7 @@
 
         <p id="loadingTxt" style="display:none; color:blue; margin-top:10px;">Fetching details...</p>
 
-        <div id="resultCard" class="status-card">
-            <h3 style="margin-top:0; color:#8B0000;">Booking Details</h3>
-            
-            <div class="status-item">
-                <strong>Hotel:</strong> <span id="resHotel" class="status-value">-</span>
-            </div>
-            <div class="status-item">
-                <strong>Room:</strong> <span id="resRoom" class="status-value">-</span>
-            </div>
-            <div class="status-item">
-                <strong>Check-In:</strong> <span id="resDate" class="status-value">-</span>
-            </div>
-            <div class="status-item">
-                <strong>Status:</strong> <span id="resStatus" class="status-value" style="color:orange;">Pending</span>
-            </div>
-            
-            <div id="paymentArea" class="pay-section">
-                <p style="color:green; font-weight:bold;">✅ Your room is confirmed!</p>
-                <button class="pay-btn" onclick="openPayment()">Pay Now</button>
-            </div>
-        </div>
+        <div id="bookingsContainer"></div>
 
         <a href="#" onclick="window.history.back(); return false;" class="home-link">← Go Back</a>
     </div>
@@ -101,14 +87,15 @@
 </div>
 
     <script>
-    // 🔴 1. మీ Apps Script URL (ఇది కరెక్ట్ గా ఉందో లేదో చూసుకోండి)
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxKQTlKrjiT8y6IZxSnDJkyNkfSAXDHzQYzIrGBkxvhV4eiM0GHw_8Xw38F6_3D_K9m/exec";
+    // 🔴 1. Apps Script URL
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwWgyE5JPgVYp68ME3R1dkG81wagIv5mjvbAPdb51BeMoxvFXNJY3Swsn1Euf1w_clW/exec";
 
-    // డేటా దాచుకోవడానికి గ్లోబల్ వేరియబుల్స్
+    // Global Variables
     var bookingData = {}; 
+    var allBookings = []; // To store list of bookings
     var currentTotalAmount = 0; 
 
-    // 🔴 2. హోటల్ వారీగా ధరల లిస్ట్ (ఇది లేకపోతే బటన్ పనిచేయదు!)
+    // 🔴 2. HOTEL PRICES (Fixed syntax errors - added commas)
     var hotelPrices = {
         "Rayala Charitable Trust": {
             "non-ac": 700,
@@ -117,16 +104,33 @@
         },
         "Yogi Vemana Reddla Annasatram": { 
             "non-ac": 700,
-            "ac-2bed": 1200,
+            "ac-2bed": 1200
         },
-        "Haritha Hotel": { 
-            "non-ac": 1000,
-            "ac-2bed": 2000,
-            "ac-3bed": 2500
+        "Arya Vysya Nitya Annadhana Satram": { 
+            "non-ac": 700,
+            "ac-2bed": 1300,
+            "ac-3bed": 1600,
+            "ac-4bed": 2000
+        },
+        "Padhmashali nitya annadhana satram": { 
+            "non-ac": 700,
+            "ac-2bed": 1300
+        },
+        "Swathi Complex": { 
+            "ac-2bed": 1700,
+            "ac-3bed": 2000,
+            "ac-4bed": 2500
+        },
+        "Sudharshna Complex": { 
+            "ac-2bed": 1700,
+            "ac-3bed": 2000,
+            "ac-4bed": 2500
+        },
+        "yadava annasatram": { 
+            "ac-2bed": 1500
         }
     };
 
-    // పేజీ లోడ్ అవ్వగానే రన్ అవుతుంది
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         const phone = urlParams.get('phone');
@@ -136,96 +140,125 @@
         }
     };
 
-    // 3. స్టేటస్ చెక్ చేసే ఫంక్షన్
+    // 3. CHECK STATUS (Modified for Multiple Bookings)
     function checkStatus() {
         var phone = document.getElementById("checkPhone").value;
         if(!phone) { alert("Please enter mobile number"); return; }
 
-        document.getElementById("loadingTxt").style.display = "block";
-        document.getElementById("resultCard").style.display = "none";
+        var container = document.getElementById("bookingsContainer");
+        var loading = document.getElementById("loadingTxt");
+        
+        loading.style.display = "block";
+        container.innerHTML = ""; // Clear previous results
 
         fetch(scriptURL + "?action=login&phone=" + phone)
         .then(response => response.json())
         .then(data => {
-            document.getElementById("loadingTxt").style.display = "none";
+            loading.style.display = "none";
             
-            if(data.status === "NotFound") {
-                alert("No booking found! \n(బుకింగ్ వివరాలు దొరకలేదు)");
+            if(data.result === "error" || data.status === "NotFound") {
+                container.innerHTML = `<p style="color:red;">No booking found! (బుకింగ్ వివరాలు దొరకలేదు)</p>`;
             } else {
-                bookingData = data; // డేటా సేవ్ చేస్తున్నాం
+                // Store all bookings in global variable
+                allBookings = data.bookings;
 
-                document.getElementById("resultCard").style.display = "block";
-                document.getElementById("resHotel").innerText = data.hotel;
-                document.getElementById("resRoom").innerText = data.room; 
-                document.getElementById("resDate").innerText = data.checkIn + " to " + data.checkOut;
-                
-                var statusElem = document.getElementById("resStatus");
-                statusElem.innerText = data.status;
+                // Loop through each booking and create a card
+                allBookings.forEach((booking, index) => {
+                    
+                    var statusColor = "orange";
+                    var statusText = booking.status;
+                    var showPayBtn = "none";
+                    var confirmMsg = "";
 
-                if(data.status === "Confirmed") {
-                    statusElem.style.color = "green";
-                    document.getElementById("paymentArea").style.display = "block";
-                } else if (data.status === "Paid (Verify)") {
-                    statusElem.style.color = "blue";
-                    statusElem.innerText = "Paid (Verifying...)";
-                    document.getElementById("paymentArea").style.display = "none";
-                } else {
-                    statusElem.style.color = "orange";
-                    document.getElementById("paymentArea").style.display = "none";
-                }
+                    if(booking.status === "Confirmed") {
+                        statusColor = "green";
+                        showPayBtn = "block";
+                        confirmMsg = `<p style="color:green; font-weight:bold;">✅ Your room is confirmed!</p>`;
+                    } else if (booking.status === "Paid (Verify)") {
+                        statusColor = "blue";
+                        statusText = "Paid (Verifying...)";
+                    }
+
+                    // Create HTML for each card
+                    var cardHTML = `
+                        <div class="status-card">
+                            <h3 class="booking-header">Booking #${index + 1}</h3>
+                            
+                            <div class="status-item">
+                                <strong>Hotel:</strong> <span class="status-value">${booking.hotel}</span>
+                            </div>
+                            <div class="status-item">
+                                <strong>Room:</strong> <span class="status-value">${booking.room}</span>
+                            </div>
+                            <div class="status-item">
+                                <strong>Date:</strong> <span class="status-value">${booking.checkIn} to ${booking.checkOut}</span>
+                            </div>
+                            <div class="status-item">
+                                <strong>Status:</strong> <span class="status-value" style="color:${statusColor};">${statusText}</span>
+                            </div>
+                            
+                            <div class="pay-section" style="display:${showPayBtn};">
+                                ${confirmMsg}
+                                <button class="pay-btn" onclick="openPaymentForBooking(${index})">Pay Now</button>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += cardHTML;
+                });
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            document.getElementById("loadingTxt").style.display = "none";
+            loading.style.display = "none";
             alert("Network Error. Please check internet.");
         });
     }
 
-    // 4. పేమెంట్ బటన్ నొక్కినప్పుడు ఇది రన్ అవుతుంది
+    // 4. PREPARE DATA FOR SELECTED BOOKING
+    function openPaymentForBooking(index) {
+        // Get the specific booking data based on index
+        bookingData = allBookings[index];
+        openPayment(); // Call the original payment function
+    }
+
+    // 5. OPEN PAYMENT MODAL
     function openPayment() {
-        // A. డేటా చెకింగ్
         if (!bookingData.hotel) {
             alert("Error: Booking data missing. Please refresh.");
             return;
         }
 
-        // B. రూమ్ మరియు రేటు
         var rawRoomName = bookingData.room ? bookingData.room.toLowerCase() : "non-ac";
         var rType = "non-ac"; 
-        if (rawRoomName.includes("non")) rType = "non-ac";
-        else if (rawRoomName.includes("3")) rType = "ac-3bed";
-        else rType = "ac-2bed";
+        
+        if (rawRoomName.includes("non")) { rType = "non-ac"; } 
+        else if (rawRoomName.includes("5")) { rType = "ac-5bed"; }
+        else if (rawRoomName.includes("4")) { rType = "ac-4bed"; }
+        else if (rawRoomName.includes("3")) { rType = "ac-3bed"; } 
+        else { rType = "ac-2bed"; }
 
         var hotelName = bookingData.hotel;
+        // Fallback to Rayala if hotel not found in list
         var selectedHotelRates = hotelPrices[hotelName] || hotelPrices["Rayala Charitable Trust"];
+        
         var pricePerNight = selectedHotelRates[rType] || 800;
 
-        // C. కాలిక్యులేషన్
         var days = calculateDays(bookingData.checkIn, bookingData.checkOut);
         var rooms = parseInt(bookingData.rooms) || 1;
         currentTotalAmount = pricePerNight * rooms * days;
 
-        // D. UPI లింక్ తయారీ
         var myUPI = "8464919219@ybl"; 
         var myName = "Rayala Trust"; 
         var phone = document.getElementById("checkPhone").value;
         
-        // ఇది UPI లింక్ (బటన్ కోసం)
         var upiLink = "upi://pay?pa=" + myUPI + "&pn=" + myName + "&am=" + currentTotalAmount + "&tn=Booking-" + phone + "&cu=INR";
 
-        // E. మోడల్ ఓపెన్ చేయడం
         var modal = document.getElementById("paymentModal");
         if(modal) {
-            // 1. బటన్ కి లింక్ ఇవ్వడం
             document.getElementById("payLink").href = upiLink;
-            
-            // 2. 👇 మ్యాజిక్ ఇక్కడే: QR Code ఆటోమేటిక్ గా జనరేట్ అవుతుంది 👇
-            // ఇది ఫ్రీ QR Code API వాడుతుంది
             var qrApiUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(upiLink);
             document.getElementById("dynamicQR").src = qrApiUrl;
 
-            // 3. టెక్స్ట్ చూపించడం
             document.getElementById("displayAmount").innerText = "₹" + currentTotalAmount;
             document.getElementById("amountDetails").innerText = `${hotelName}\n(${rooms} Rooms x ${days} Days x ₹${pricePerNight})`;
             
@@ -258,11 +291,18 @@
 
     function calculateDays(start, end) {
         if(!start || !end) return 1; 
-        var parts1 = start.split('/');
-        var parts2 = end.split('/');
-        // Date format: DD/MM/YYYY
-        var d1 = new Date(parts1[2], parts1[1] - 1, parts1[0]);
-        var d2 = new Date(parts2[2], parts2[1] - 1, parts2[0]);
+        // Adjust date parsing for YYYY-MM-DD format from Apps Script
+        var d1 = new Date(start);
+        var d2 = new Date(end);
+        
+        // Fallback for DD/MM/YYYY if manual entry
+        if (isNaN(d1)) {
+            var parts1 = start.split('/');
+            var parts2 = end.split('/');
+            d1 = new Date(parts1[2], parts1[1] - 1, parts1[0]);
+            d2 = new Date(parts2[2], parts2[1] - 1, parts2[0]);
+        }
+
         var timeDiff = d2.getTime() - d1.getTime();
         var daysDiff = timeDiff / (1000 * 3600 * 24); 
         return daysDiff > 0 ? Math.ceil(daysDiff) : 1;

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History of Ahobilam</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
     <header class="main-header">
@@ -19,8 +23,8 @@
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="hotels.html" class="active">HOTELS</a></li>
                 <li><a href="History-of-Ahobilam.html">ABOUT AHOBILAM</a></li>
-                <li><a href="#temples">TEMPLE TIMINGS</a></li>
-                <li><a href="#blogs">BLOGS</a></li>
+                <li><a href="Ahobilam-Yatra-Guide.html">TEMPLE TIMINGS</a></li>
+                <li><a href="Contact.html" class="active">CONTACT</a></li>
             </ul>
         </nav>
 
@@ -38,20 +42,20 @@
         </div>
     </header>
 
-  <style>
+    <style>
         /* --- 1. GLOBAL VINTAGE THEME --- */
         body {
-            background-color: #fdf5e6; /* Old Paper Color */
+            background-color: #fdf5e6;
+            /* Old Paper Color */
             background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
             color: #2c1e12;
             font-family: 'Lato', sans-serif;
-            margin: 0; padding: 0;
+            margin: 0;
+            padding: 0;
             line-height: 1.8;
-            overflow-x: hidden; /* సైడ్ స్క్రోల్ రాకుండా */
+            overflow-x: hidden;
+            /* సైడ్ స్క్రోల్ రాకుండా */
         }
-
-        /* Header Styles */
-        .main-header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
 
         /* --- 2. HISTORY SECTION (TOP) --- */
         .history-section {
@@ -72,7 +76,8 @@
         .history-grid {
             display: flex;
             gap: 40px;
-            align-items: flex-start; /* పైన సమానంగా ఉంటాయి */
+            align-items: flex-start;
+            /* పైన సమానంగా ఉంటాయి */
         }
 
         .history-text {
@@ -81,8 +86,10 @@
             color: #333;
             text-align: justify;
         }
-        
-        .history-text p { margin-bottom: 15px; }
+
+        .history-text p {
+            margin-bottom: 15px;
+        }
 
         .dynasty-list li {
             margin-bottom: 10px;
@@ -94,10 +101,11 @@
         .painting-box {
             flex: 0.8;
         }
+
         .painting-img {
             width: 100%;
             border: 5px solid #fff;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             filter: sepia(0.2);
             border-radius: 5px;
         }
@@ -111,14 +119,22 @@
         }
 
         /* MAP */
-        .map-box { text-align: center; margin-bottom: 100px; }
+        .map-box {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
         .map-img {
-            width: 90%; max-width: 800px;
+            width: 90%;
+            max-width: 800px;
             border-radius: 5px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s;
         }
-        .map-img:hover { transform: translateY(-5px); }
+
+        .map-img:hover {
+            transform: translateY(-5px);
+        }
 
         /* --- 4. OVERLAPPING CARDS (MAIN FIX) --- */
         .temple-row {
@@ -131,7 +147,8 @@
 
         /* Image Box */
         .t-img-box {
-            width: 60%; /* ఫోటో వెడల్పు */
+            width: 60%;
+            /* ఫోటో వెడల్పు */
             position: relative;
             z-index: 1;
         }
@@ -139,20 +156,23 @@
         /* Image Styling (ముఖం కట్ అవ్వకుండా ఫిక్స్ చేశాను) */
         /* --- OLD CODE తీసేసి ఇది పెట్టండి --- */
 
-.t-img {
-    width: 100%;
-    height: 500px; /* హైట్ ఫిక్స్డ్ గా ఉంచుదాం (Frame లాగా) */
-    object-fit: contain; /* *** ముఖ్యం: ఇది వాడితే ఫోటో అస్సలు కట్ అవ్వదు *** */
-    object-position: center; 
-    border-radius: 6px;
-    
-    /* ఫోటో చుట్టూ ఖాళీగా ఉంటే చూడటానికి బాగుండటానికి చిన్న బోర్డర్ & బ్యాక్‌గ్రౌండ్ */
-    background-color: rgba(255, 255, 255, 0.5); 
-    border: 1px solid #d4af37; 
-    
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-    filter: sepia(0.1) contrast(1.1); /* వింటేజ్ ఎఫెక్ట్ */
-}
+        .t-img {
+            width: 100%;
+            height: 500px;
+            /* హైట్ ఫిక్స్డ్ గా ఉంచుదాం (Frame లాగా) */
+            object-fit: contain;
+            /* *** ముఖ్యం: ఇది వాడితే ఫోటో అస్సలు కట్ అవ్వదు *** */
+            object-position: center;
+            border-radius: 6px;
+
+            /* ఫోటో చుట్టూ ఖాళీగా ఉంటే చూడటానికి బాగుండటానికి చిన్న బోర్డర్ & బ్యాక్‌గ్రౌండ్ */
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid #d4af37;
+
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            filter: sepia(0.1) contrast(1.1);
+            /* వింటేజ్ ఎఫెక్ట్ */
+        }
 
         /* Text Content Box */
         .t-content {
@@ -160,30 +180,37 @@
             background: #fff;
             padding: 40px;
             background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 2;
-            
+
             /* Overlap Fix */
-            margin-left: -50px; 
-            margin-top: 40px; 
+            margin-left: -50px;
+            margin-top: 40px;
             border-radius: 4px;
         }
 
         /* Reverse Layout (Zig-Zag) */
-        .temple-row.reverse { flex-direction: row-reverse; }
-        
+        .temple-row.reverse {
+            flex-direction: row-reverse;
+        }
+
         .temple-row.reverse .t-content {
             margin-left: 0;
-            margin-right: -50px; /* ఇటు వైపు ఓవర్‌లాప్ */
+            margin-right: -50px;
+            /* ఇటు వైపు ఓవర్‌లాప్ */
         }
 
         .card-num {
             font-family: 'Playfair Display';
             font-size: 4rem;
             color: rgba(139, 0, 0, 0.1);
-            position: absolute; top: 10px; right: 20px; line-height: 1;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            line-height: 1;
         }
+
         .card-title {
             font-family: 'Playfair Display';
             font-size: 2rem;
@@ -200,23 +227,39 @@
             padding: 50px 30px;
             text-align: center;
             position: relative;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            outline: 5px solid #fffcf0; outline-offset: -10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            outline: 5px solid #fffcf0;
+            outline-offset: -10px;
         }
-        .royal-icon { font-size: 3rem; color: #8b0000; margin-bottom: 20px; }
+
+        .royal-icon {
+            font-size: 3rem;
+            color: #8b0000;
+            margin-bottom: 20px;
+        }
+
         .timings-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             color: #2c1e12;
             margin-bottom: 30px;
             border-bottom: 1px solid #d4af37;
-            display: inline-block; padding-bottom: 10px;
+            display: inline-block;
+            padding-bottom: 10px;
         }
+
         .time-grid {
-            display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
         }
+
         .time-box h4 {
-            font-size: 1.2rem; color: #8b0000; margin-bottom: 10px; text-transform: uppercase;
+            font-size: 1.2rem;
+            color: #8b0000;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         /* --- 6. GUESTBOOK FORM --- */
@@ -225,81 +268,152 @@
             margin: 0 auto 80px;
             text-align: center;
             padding: 50px 20px;
-            background: rgba(255,255,255,0.4);
+            background: rgba(255, 255, 255, 0.4);
             border-top: 1px solid #d4af37;
         }
-        .feather-pen { font-size: 3rem; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
+
+        .feather-pen {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
         .guestbook-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             color: #8b0000;
             margin-bottom: 30px;
         }
-        
-        .vintage-form { max-width: 600px; margin: 0 auto; text-align: left; }
-        .input-group { position: relative; margin-bottom: 40px; }
-        
-        .input-group input, .input-group textarea {
-            width: 100%; padding: 10px 0; font-size: 1.2rem; color: #2c1e12;
-            border: none; border-bottom: 2px solid #d4af37; outline: none;
-            background: transparent; font-family: 'Lato', sans-serif;
+
+        .vintage-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 1.2rem;
+            color: #2c1e12;
+            border: none;
+            border-bottom: 2px solid #d4af37;
+            outline: none;
+            background: transparent;
+            font-family: 'Lato', sans-serif;
             transition: border-color 0.3s;
         }
-        .input-group input:focus, .input-group textarea:focus { border-bottom: 2px solid #8b0000; }
-        
-        .input-group label {
-            position: absolute; top: 10px; left: 0; font-size: 1.1rem; color: #888;
-            pointer-events: none; transition: 0.3s ease all; font-family: 'Playfair Display', serif;
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-bottom: 2px solid #8b0000;
         }
-        
-        .input-group input:focus ~ label, .input-group input:valid ~ label,
-        .input-group textarea:focus ~ label, .input-group textarea:valid ~ label {
-            top: -20px; font-size: 0.9rem; color: #8b0000;
+
+        .input-group label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            font-size: 1.1rem;
+            color: #888;
+            pointer-events: none;
+            transition: 0.3s ease all;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .input-group input:focus~label,
+        .input-group input:valid~label,
+        .input-group textarea:focus~label,
+        .input-group textarea:valid~label {
+            top: -20px;
+            font-size: 0.9rem;
+            color: #8b0000;
         }
 
         .royal-btn {
-            display: block; margin: 0 auto; padding: 12px 40px;
-            background: #8b0000; color: #fff; border: 2px solid #d4af37;
-            font-family: 'Playfair Display', serif; font-size: 1.2rem; cursor: pointer;
-            text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+            display: block;
+            margin: 0 auto;
+            padding: 12px 40px;
+            background: #8b0000;
+            color: #fff;
+            border: 2px solid #d4af37;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
         }
-        .royal-btn:hover { background: #d4af37; color: #8b0000; border-color: #8b0000; }
 
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .royal-btn:hover {
+            background: #d4af37;
+            color: #8b0000;
+            border-color: #8b0000;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
 
 
         /* ========================================= */
         /* 7. MOBILE RESPONSIVE FIXES (ముఖ్యమైనది)   */
         /* ========================================= */
         @media (max-width: 900px) {
-            
+
             /* History Section Stack */
-            .history-grid { flex-direction: column; }
-            .history-text { width: 100%; }
-            .painting-box { width: 100%; }
+            .history-grid {
+                flex-direction: column;
+            }
+
+            .history-text {
+                width: 100%;
+            }
+
+            .painting-box {
+                width: 100%;
+            }
 
             /* Temple Row Stack */
-            .temple-row, .temple-row.reverse {
+            .temple-row,
+            .temple-row.reverse {
                 flex-direction: column;
                 margin-bottom: 60px;
             }
-            
+
             /* --- OLD CODE తీసేసి ఇది పెట్టండి --- */
 
-.t-img {
-    width: 100%;
-    height: 500px; /* హైట్ ఫిక్స్డ్ గా ఉంచుదాం (Frame లాగా) */
-    object-fit: contain; /* *** ముఖ్యం: ఇది వాడితే ఫోటో అస్సలు కట్ అవ్వదు *** */
-    object-position: center; 
-    border-radius: 6px;
-    
-    /* ఫోటో చుట్టూ ఖాళీగా ఉంటే చూడటానికి బాగుండటానికి చిన్న బోర్డర్ & బ్యాక్‌గ్రౌండ్ */
-    background-color: rgba(255, 255, 255, 0.5); 
-    border: 1px solid #d4af37; 
-    
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-    filter: sepia(0.1) contrast(1.1); /* వింటేజ్ ఎఫెక్ట్ */
-}
+            .t-img {
+                width: 100%;
+                height: 500px;
+                /* హైట్ ఫిక్స్డ్ గా ఉంచుదాం (Frame లాగా) */
+                object-fit: contain;
+                /* *** ముఖ్యం: ఇది వాడితే ఫోటో అస్సలు కట్ అవ్వదు *** */
+                object-position: center;
+                border-radius: 6px;
+
+                /* ఫోటో చుట్టూ ఖాళీగా ఉంటే చూడటానికి బాగుండటానికి చిన్న బోర్డర్ & బ్యాక్‌గ్రౌండ్ */
+                background-color: rgba(255, 255, 255, 0.5);
+                border: 1px solid #d4af37;
+
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+                filter: sepia(0.1) contrast(1.1);
+                /* వింటేజ్ ఎఫెక్ట్ */
+            }
+        }
     </style>
 
     <section class="history-section">
@@ -307,10 +421,14 @@
         <div class="history-grid">
             <div class="history-text">
                 <p>
-                    Ahobilam, nestled amidst the rugged <strong>Eastern Ghats</strong>, is one of the most revered centers of Vaishnavism in India. Dedicated to <strong>Lord Narasimha</strong>, this sacred pilgrimage site is believed to be the place where the Lord appeared to protect His devotee, Prahlada.
+                    Ahobilam, nestled amidst the rugged <strong>Eastern Ghats</strong>, is one of the most revered
+                    centers of Vaishnavism in India. Dedicated to <strong>Lord Narasimha</strong>, this sacred
+                    pilgrimage site is believed to be the place where the Lord appeared to protect His devotee,
+                    Prahlada.
                 </p>
                 <p>
-                    The temple complex comprises the <strong>Nava Narasimha temples</strong>—nine shrines representing the boundless compassion and ferocity of the Lord.
+                    The temple complex comprises the <strong>Nava Narasimha temples</strong>—nine shrines representing
+                    the boundless compassion and ferocity of the Lord.
                 </p>
                 <ul class="dynasty-list">
                     <li><strong>The Chalukyas:</strong> Known for temple architecture.</li>
@@ -325,7 +443,7 @@
     </section>
 
     <div class="temples-container">
-        
+
         <div class="section-header">
             <h2 class="sub-title">Nava Narasimha Kshetram</h2>
             <p style="color: #b8860b; font-style: italic;">The Divine Chronicle</p>
@@ -341,8 +459,12 @@
             <div class="t-content">
                 <div class="card-num">01</div>
                 <h3 class="card-title">Jwala Narasimha</h3>
-                <p>Garuda Bhagavan performed Tapas (Penance) on a hill to know the Para Thathwam(Supreme Philosophy) as per the instructions of Kashyapa Prajapathi. Bhagavan appeared in the form of Jwala Narasimha and blessed him with two boons.
-As per those boons, Bhagavan Shri Jwala Narasimha Swamy blessed that the hill on which Garuda performed Tapas shall be called as "Garudaadri", and Garuda was also blessed Garuda as his Mukhya Vahana (Main Vehicle).
+                <p>Garuda Bhagavan performed Tapas (Penance) on a hill to know the Para Thathwam(Supreme Philosophy) as
+                    per the instructions of Kashyapa Prajapathi. Bhagavan appeared in the form of Jwala Narasimha and
+                    blessed him with two boons.
+                    As per those boons, Bhagavan Shri Jwala Narasimha Swamy blessed that the hill on which Garuda
+                    performed Tapas shall be called as "Garudaadri", and Garuda was also blessed Garuda as his Mukhya
+                    Vahana (Main Vehicle). </p>
             </div>
         </div>
 
@@ -351,8 +473,14 @@ As per those boons, Bhagavan Shri Jwala Narasimha Swamy blessed that the hill on
             <div class="t-content">
                 <div class="card-num">02</div>
                 <h3 class="card-title">Ahobila Narasimha</h3>
-                <p>Sri Ahobila Narasimha Swamy is the main deity of Ahobila Kshetram. In this picture, Sannidhi Bhagavan is seated in the cave on a raised platform, with Bhaktha Prahlada in front. All the Devas, after seeing the ferocious avatara of Narasimha Swamy and his victory over the rakshasa Hiranyakashipu, praised Bhagavan "Ahoveeryam Aho Shouryam Aho Baahu Parakramam Narasimham Param Daivam Ahobilam Ahobalam" and hence this sannidhi has the name Ahobala.
-Bhagavan Shiva worshipped Ahobila Narasimha Swamy with "Mantra Raja Pada Stotram", Bhagavan Rama with Panchamrutha Stotram. Baghavan Srinivasa offered the food prepared at the time of his marriage to Sri Ahobila Narasimha Swamy. Here, Goddess Mahalakshmi is worshipped as Chenchu Lakshmi.
+                <p>Sri Ahobila Narasimha Swamy is the main deity of Ahobila Kshetram. In this picture, Sannidhi Bhagavan
+                    is seated in the cave on a raised platform, with Bhaktha Prahlada in front. All the Devas, after
+                    seeing the ferocious avatara of Narasimha Swamy and his victory over the rakshasa Hiranyakashipu,
+                    praised Bhagavan "Ahoveeryam Aho Shouryam Aho Baahu Parakramam Narasimham Param Daivam Ahobilam
+                    Ahobalam" and hence this sannidhi has the name Ahobala.
+                    Bhagavan Shiva worshipped Ahobila Narasimha Swamy with "Mantra Raja Pada Stotram", Bhagavan Rama
+                    with Panchamrutha Stotram. Baghavan Srinivasa offered the food prepared at the time of his marriage
+                    to Sri Ahobila Narasimha Swamy. Here, Goddess Mahalakshmi is worshipped as Chenchu Lakshmi. </p>
             </div>
         </div>
 
@@ -361,8 +489,13 @@ Bhagavan Shiva worshipped Ahobila Narasimha Swamy with "Mantra Raja Pada Stotram
             <div class="t-content">
                 <div class="card-num">03</div>
                 <h3 class="card-title">Malola Narasimha</h3>
-                <p>According to legend, Godess Maha Lakshmi was angry at Bhagavan Narasimha Swamy as he had married Chenchu Lakshmi. So, Bhagavan Narasimha pleased Godess Mahalakshmi on the hills of Vedadri. Sri Malola Narasimha Swamy is the Aradhya Daiva of Sri Ahobila Matha.
-Bhagavan Ahobila Narasimha Swamyblessed the First Jeer of Sri Ahobila Matha, Sri Adivan Satagopa Yatheendra Mahadesikan, with sanyasa and appeared as Archa Moorthi in his hands. Bhagavan ordered the first Jeer to take his Malola Narasimha Archa Moorthi to every village and instill Sri Vaisnavism to the people.
+                <p>According to legend, Godess Maha Lakshmi was angry at Bhagavan Narasimha Swamy as he had married
+                    Chenchu Lakshmi. So, Bhagavan Narasimha pleased Godess Mahalakshmi on the hills of Vedadri. Sri
+                    Malola Narasimha Swamy is the Aradhya Daiva of Sri Ahobila Matha.
+                    Bhagavan Ahobila Narasimha Swamyblessed the First Jeer of Sri Ahobila Matha, Sri Adivan Satagopa
+                    Yatheendra Mahadesikan, with sanyasa and appeared as Archa Moorthi in his hands. Bhagavan ordered
+                    the first Jeer to take his Malola Narasimha Archa Moorthi to every village and instill Sri
+                    Vaisnavism to the people. </p>
             </div>
         </div>
 
@@ -380,8 +513,10 @@ Bhagavan Ahobila Narasimha Swamyblessed the First Jeer of Sri Ahobila Matha, Sri
             <div class="t-content">
                 <div class="card-num">05</div>
                 <h3 class="card-title">Karanja Narasimha</h3>
-                <p>Sri Karanja Narasimha swamy blessed Gobila Maharshi with knowledge. Hanuman worshipped Bhagavan here. Sri Karanja Narasimha swamy had an eye on his forehead (Phalanetra)
-Bhaktha Kavi Srimaan Thallapaka Annamacharya offered his prayers to Sri Karanja Narasimha swamy in the famous sankeerthana "Phalanetranala Prabala vidyulatha keli vihara Lakshmi Narasimha".
+                <p>Sri Karanja Narasimha swamy blessed Gobila Maharshi with knowledge. Hanuman worshipped Bhagavan here.
+                    Sri Karanja Narasimha swamy had an eye on his forehead (Phalanetra)
+                    Bhaktha Kavi Srimaan Thallapaka Annamacharya offered his prayers to Sri Karanja Narasimha swamy in
+                    the famous sankeerthana "Phalanetranala Prabala vidyulatha keli vihara Lakshmi Narasimha". </p>
             </div>
         </div>
 
@@ -390,8 +525,10 @@ Bhaktha Kavi Srimaan Thallapaka Annamacharya offered his prayers to Sri Karanja 
             <div class="t-content">
                 <div class="card-num">06</div>
                 <h3 class="card-title">Bhargava Narasimha</h3>
-                <p>Bhagavan Parasurama (Bhargava Rama) did Tapas (penance) for Narasimha Swamy on the banks of Akshaya Theertham to get rid of all his sins. This place became famous after his name as Bhargava Theertham.
-Bhagavan Narasimha Swamy appeared before Parasurama and purified his sins that he had accumulated due to Kshetriya Samhara.
+                <p>Bhagavan Parasurama (Bhargava Rama) did Tapas (penance) for Narasimha Swamy on the banks of Akshaya
+                    Theertham to get rid of all his sins. This place became famous after his name as Bhargava Theertham.
+                    Bhagavan Narasimha Swamy appeared before Parasurama and purified his sins that he had accumulated
+                    due to Kshetriya Samhara. </p>
             </div>
         </div>
 
@@ -400,8 +537,9 @@ Bhagavan Narasimha Swamy appeared before Parasurama and purified his sins that h
             <div class="t-content">
                 <div class="card-num">07</div>
                 <h3 class="card-title">Yogananda Narasimha</h3>
-                <p>Bhagavan Narasimha Swamy taught Rajaneethi Sastram and Yoga Sastram to Bhaktha Prahlada after killing the Rakshasa Hiranya kasipu.
-Bhagavan Brahma Deva had worshipped Yogananda Narasimha Swamy to get relieved from Mental Stress.
+                <p>Bhagavan Narasimha Swamy taught Rajaneethi Sastram and Yoga Sastram to Bhaktha Prahlada after killing
+                    the Rakshasa Hiranya kasipu.
+                    Bhagavan Brahma Deva had worshipped Yogananda Narasimha Swamy to get relieved from Mental Stress. </p>
             </div>
         </div>
 
@@ -410,43 +548,50 @@ Bhagavan Brahma Deva had worshipped Yogananda Narasimha Swamy to get relieved fr
             <div class="t-content">
                 <div class="card-num">08</div>
                 <h3 class="card-title">Chatravata Narasimha</h3>
-                <p>Two Gandharvas- HaHa and HuHu reached Ahobilam from Meru Hill and started singing songs in praise of Bhagavan Sri Narasimha Swamy under a Vata Vruksham.
-Being pleased with their devotional songs, Bhagavan Chatravata Narasimha Swamy blessed them with a boon that they are the best singers in this world.
+                <p>Two Gandharvas- HaHa and HuHu reached Ahobilam from Meru Hill and started singing songs in praise of
+                    Bhagavan Sri Narasimha Swamy under a Vata Vruksham.
+                    Being pleased with their devotional songs, Bhagavan Chatravata Narasimha Swamy blessed them with a
+                    boon that they are the best singers in this world.</p>
             </div>
         </div>
 
         <div class="temple-row">
             <div class="t-img-box"><img src="temples/pavana.jpg" alt="Pavana" class="t-img"></div>
-            <div class="t-content">
-                <div class="card-num">09</div>
-                <h3 class="card-title">Pavana Narasimha</h3>
-                <p>Sri Pavana Narasimha Swamy is the most important Prarthana Daivam among the Nava Narasimhas. Sage Bharadwaja got free of his Mahapathakam by worshipping Bhagavan Pavana Narasimha Swamy.
-Any person who committed sins may get free of them by having Darshanam of Sri Pavana Narasimha Swamy. Chenchus regard Pavana Narasimha as their brother-in-law and offer special poojas every year.
-            </div>
+              <div class="t-content">
+              <div class="card-num">09</div>
+                   <h3 class="card-title">Pavana Narasimha</h3>
+                  <p>Sri Pavana Narasimha Swamy is the most important Prarthana Daivam among the Nava Narasimhas. Sage
+                    Bharadwaja got free of his Mahapathakam by worshipping Bhagavan Pavana Narasimha Swamy.
+                    Any person who committed sins may get free of them by having Darshanam of Sri Pavana Narasimha
+                    Swamy. Chenchus regard Pavana Narasimha as their brother-in-law and offer special poojas every year. </p>
+               </div>
         </div>
 
     </div>
 
-<div class="essentials-section">
+    <div class="essentials-section">
         <h2 class="essentials-title">Pilgrim's Essentials</h2>
         <div class="essentials-grid">
-            
+
             <div class="info-card">
                 <div class="icon-area">📅</div>
                 <h3>Best Time to Visit</h3>
-                <p>The best time to visit Ahobilam is from <strong>August to February</strong> when the weather is pleasant. The forest is lush green after the rains, making the trek enjoyable.</p>
+                <p>The best time to visit Ahobilam is from <strong>August to February</strong> when the weather is
+                    pleasant. The forest is lush green after the rains, making the trek enjoyable.</p>
             </div>
 
             <div class="info-card">
                 <div class="icon-area">🥾</div>
                 <h3>Trekking Tips</h3>
-                <p>Jwala and Pavana shrines require trekking. Wear comfortable walking shoes. Carrying a bamboo stick (available locally) is recommended for support on steep paths.</p>
+                <p>Jwala and Pavana shrines require trekking. Wear comfortable walking shoes. Carrying a bamboo stick
+                    (available locally) is recommended for support on steep paths.</p>
             </div>
 
             <div class="info-card">
                 <div class="icon-area">🙏</div>
                 <h3>Dress Code</h3>
-                <p>Traditional wear is preferred. For men: Dhoti/Kurta or Shirt-Pants. For women: Saree or Chudidhar. Avoid shorts and sleeveless clothes as it is a sacred Kshetram.</p>
+                <p>Traditional wear is preferred. For men: Dhoti/Kurta or Shirt-Pants. For women: Saree or Chudidhar.
+                    Avoid shorts and sleeveless clothes as it is a sacred Kshetram.</p>
             </div>
 
         </div>
@@ -482,7 +627,7 @@ Any person who committed sins may get free of them by having Darshanam of Sri Pa
             background: #fff;
             padding: 30px 20px;
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             border: 1px solid #e0d0b0;
             transition: transform 0.3s;
         }
@@ -514,7 +659,7 @@ Any person who committed sins may get free of them by having Darshanam of Sri Pa
     <div class="timings-section">
         <div class="royal-icon">🕉️</div>
         <h2 class="timings-title">Temple Darshan Timings</h2>
-        
+
         <div class="time-grid">
             <div class="time-box">
                 <h4>Lower Ahobilam</h4>
@@ -539,30 +684,33 @@ Any person who committed sins may get free of them by having Darshanam of Sri Pa
     <div class="guestbook-container">
         <div class="feather-pen">🪶</div>
         <h2 class="guestbook-title">The Pilgrim's Scroll</h2>
-        <p style="color: #666; font-style: italic; margin-bottom: 30px;">"Share your divine experience with fellow pilgrims."</p>
+        <p style="color: #666; font-style: italic; margin-bottom: 30px;">"Share your divine experience with fellow
+            pilgrims."</p>
 
-<form class="vintage-form" action="https://formspree.io/f/mdadoldb" method="POST">
-    
-    <input type="hidden" name="_subject" value="New Pilgrim Entry" />
+        <form class="vintage-form" action="https://formspree.io/f/mdadoldb" method="POST">
 
-    <input type="hidden" name="_next" value="history.html" />
+            <input type="hidden" name="_subject" value="New Pilgrim Entry" />
 
-    <div class="input-group">
-        <input type="text" name="name" required>
-        <label>Your Name</label>
-    </div>
-    
-    <div class="input-group">
-        <textarea name="message" required rows="3"></textarea>
-        <label>Your Message</label>
-    </div>
+            <input type="hidden" name="_next" value="history.html" />
 
-    <button type="submit" class="royal-btn">Submit Entry</button>
-</form>
+            <div class="input-group">
+                <input type="text" name="name" required>
+                <label>Your Name</label>
+            </div>
+
+            <div class="input-group">
+                <textarea name="message" required rows="3"></textarea>
+                <label>Your Message</label>
+            </div>
+
+            <button type="submit" class="royal-btn">Submit Entry</button>
+        </form>
 
         <div style="margin-top: 50px;">
             <p>Planning a stay?</p>
-            <a href="hotels.html" style="color: #8b0000; font-weight: bold; text-decoration: none; border-bottom: 1px solid #8b0000;">Book Your Accommodation</a>
+            <a href="hotels.html"
+                style="color: #8b0000; font-weight: bold; text-decoration: none; border-bottom: 1px solid #8b0000;">Book
+                Your Accommodation</a>
         </div>
     </div>
 
@@ -570,51 +718,52 @@ Any person who committed sins may get free of them by having Darshanam of Sri Pa
         function toggleMenu() { document.getElementById("navMenu").classList.toggle("active"); }
     </script>
 
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-box about-box">
+                <img src="foter-logo.png" alt="Ahobilam Hotels Logo" class="footer-logo">
+                <p>Our mission is to provide excellent accommodation and service to the devotees visiting the holy abode
+                    of Ahobilam Narasimha Swamy.</p>
+            </div>
+
+            <div class="footer-box links-box">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="history-of-Ahobilam.html">History</a></li>
+                    <li><a href="hotels.html">Hotels</a></li>
+                    <li><a href="Contact.html" class="active">CONTACT</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-box policies-box">
+                <h3>Policies</h3>
+                <ul>
+                    <li><a href="policies.html#privacy">Privacy Policy</a></li>
+                    <li><a href="policies.html#terms">Terms & Conditions</a></li>
+                    <li><a href="policies.html#refund">Return & Refund Policy</a></li>
+                    <li><a href="policies.html#guest">Guest Policy</a></li>
+                    <li><a href="policies.html#booking">Booking Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-box contact-box">
+                <h3>Contact Us</h3>
+                <p><strong>Email:</strong><br>
+                    <a href="mailto:ahobilamhotelsservices@gmail.com"
+                        style="font-size: 0.9rem;">ahobilamhotelsservices@gmail.com</a>
+                </p>
+                <p style="margin-top: 15px;"><strong>Address:</strong><br>
+                    Ahobilam(V), Allagadda(M),<br>
+                    Nandyala - 518543, AP.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ahobilam Hotels & Services. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
-
-<footer class="main-footer">
-    <div class="footer-container">
-        <div class="footer-box about-box">
-    <img src="foter-logo.png" alt="Ahobilam Hotels Logo" class="footer-logo">
-    <p>Our mission is to provide excellent accommodation and service to the devotees visiting the holy abode of Ahobilam Narasimha Swamy.</p>
-</div>
-
-        <div class="footer-box links-box">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="history-of-ahobilam.html">History</a></li>
-                <li><a href="hotels.html">Hotels</a></li>
-                <li><a href="faqs.html">FAQs</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-box policies-box">
-            <h3>Policies</h3>
-            <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Return & Refund Policy</a></li>
-                <li><a href="#">Guest Policy</a></li>
-                <li><a href="#">Booking Policy</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-box contact-box">
-            <h3>Contact Us</h3>
-            <p><strong>Email:</strong><br>
-               <a href="mailto:ahobilamhotelsservices@gmail.com" style="font-size: 0.9rem;">ahobilamhotelsservices@gmail.com</a>
-            </p>
-            <p style="margin-top: 15px;"><strong>Address:</strong><br>
-               Ahobilam(V), Allagadda(M),<br>
-               Nandyala - 518543, AP.
-            </p>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>&copy; 2026 Ahobilam Hotels & Services. All Rights Reserved.</p>
-    </div>
-</footer>
 
 </html>

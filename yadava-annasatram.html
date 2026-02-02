@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rayala Charitable Trust - Ahobilam</title>
+    <title>yadhava Annasatram - Ahobilam</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     
@@ -65,23 +65,23 @@
     <div class="hotel-header-section">
         <div class="container centered-container">
             <a href="hotels.html" class="back-link-simple">← Back to Hotels</a>
-            <h1 class="hotel-main-title">Rayala Charitable Trust - Ahobilam</h1>
+            <h1 class="hotel-main-title">yadhava Annasatram - Ahobilam</h1>
             <p class="hotel-sub-text">📍 Near Main Temple, Diguva Ahobilam • 🏢 Nityannadana Satram</p>
         </div>
     </div>
 
     <div class="main-gallery-section">
         <div class="gallery-grid">
-            <div class="big-img-wrapper" onclick="openModal('hotel1.jpg')">
-                <img src="hotel1.jpg" alt="Building View" class="g-img main">
+            <div class="big-img-wrapper" onclick="openModal('hotel12.jpg')">
+                <img src="hotel12.jpg" alt="Building View" class="g-img main">
             </div>
             
             <div class="side-imgs">
-                <div class="small-img-wrapper" onclick="openModal('rct hotel/rct-inside.jpg')">
-                    <img src="rct hotel/rct-inside.jpg" alt="Side View" class="g-img">
+                <div class="small-img-wrapper" onclick="openModal('hotel12.jpg')">
+                    <img src="hotel12.jpg" alt="Side View" class="g-img">
                 </div>
-                <div class="small-img-wrapper" onclick="openModal('rct hotel/rct-carparking.jpg')">
-                    <img src="rct hotel/rct-carparking.jpg" alt="Reception View" class="g-img">
+                <div class="small-img-wrapper" onclick="openModal('hotel12.jpg')">
+                    <img src="hotel12.jpg" alt="Reception View" class="g-img">
                     <div class="overlay-text">+ See All</div>
                 </div>
             </div>
@@ -147,36 +147,14 @@
     <h2 class="section-title">Select Your Room</h2>
 
     <div class="room-row">
-        <div class="room-left-img" onclick="openRoomGallery('nonac')">
-            <img src="rct hotel/rct-non-ac1.jpg" alt="Non AC Room">
-            <div class="photos-badge">📷 View Photos</div>
-        </div>
-        
-        <div class="room-mid-details">
-            <h3>Non-AC Double Bed</h3>
-            <p class="room-desc">Simple room with attached western toilet. Best for couples.</p>
-            <div class="features-list">
-                <span>Attached Bathroom</span>
-                <span>2 single-cots</span>
-                <span>Daily Cleaning</span>
-            </div>
-        </div>
-
-        <a href="javascript:void(0)" class="room-right-price-btn" onclick="openBookingModal('Rayala charitable trust', 'non-ac',10)">
-            <span class="price-txt">₹700</span>
-            <span class="book-txt">Book Now ></span>
-        </a>
-    </div>
-
-    <div class="room-row">
         <div class="room-left-img" onclick="openRoomGallery('ac')">
-            <img src="rct hotel/rct-ac1.jpg" alt="AC Room">
+            <img src="yadava-annasatram/yadava-annasatram-ac1.jpeg" alt="AC Room">
             <div class="photos-badge">📷 View Photos</div>
         </div>
 
         <div class="room-mid-details">
             <h3>AC Double Bed</h3>
-            <p class="room-desc">Comfortable AC room with TV and Geyser facility.</p>
+            <p class="room-desc">Comfortable AC room and Geyser facility.</p>
             <div class="features-list">
                 <span>AC Available</span>
                 <span>Western Toilet</span>
@@ -184,30 +162,7 @@
             </div>
         </div>
 
-        <a href="javascript:void(0)" class="room-right-price-btn" onclick="openBookingModal('Rayala Chritable Trust','AC-2Bed-room',10)">
-            <span class="price-txt">₹1,200</span>
-            <span class="book-txt">Book Now ></span>
-        </a>
-    </div>
-
-    <div class="room-row">
-        <div class="room-left-img" onclick="openRoomGallery('family')">
-            <img src="rct hotel/rct-3bed-1.jpg" alt="3 Bed Room">
-            <div class="photos-badge">📷 View Photos</div>
-        </div>
-
-        <div class="room-mid-details">
-            <h3>3-Bed AC Family Room</h3>
-            <p class="room-desc">Spacious room for small families with extra bed.</p>
-            <div class="features-list">
-                <span>For 3 Persons</span>
-                <span>AC & TV</span>
-                <span>Attached Bath</span>
-                <span>Extra Space</span>
-            </div>
-        </div>
-
-        <a href="javascript:void(0)" class="room-right-price-btn" onclick="openBookingModal('Rayala Chritable Trust','3-Bed-room',2)">
+        <a href="javascript:void(0)" class="room-right-price-btn" onclick="openBookingModal('Yadava Annasatram','AC-2Bed-room',3)">
             <span class="price-txt">₹1,500</span>
             <span class="book-txt">Book Now ></span>
         </a>
@@ -236,20 +191,10 @@
         
         // 1. రూమ్ ఫోటోల డేటా (ఇక్కడ మీ ఫోటోలు మార్చుకోవచ్చు)
         const roomPhotos = {
-            'nonac': [
-                { src: 'rct hotel/rct-non-ac1.jpg', desc: 'Main Bedroom View' },
-                { src: 'rct hotel/rct-non-ac2.jpg', desc: 'Entrance View' },
-                { src: 'rct hotel/rct-non-ac3.jpg', desc: 'Attached Bathroom' }
-            ],
             'ac': [
-                { src: 'rct hotel/rct-ac1.jpg', desc: 'AC Bedroom - Front View' },
-                { src: 'rct hotel/rct-ac2.jpg', desc: 'Clean Washroom' },
-                { src: 'rct hotel/rct-ac3.jpg', desc: 'main Room' }
-            ],
-            'family': [
-                { src: 'rct hotel/rct-3bed-1.jpg', desc: 'Spacious 3-Bed Room' },
-                { src: 'rct hotel/rct-3bed-2.jpg', desc: 'Bathroom' },
-                { src: 'rct hotel/rct-3bed-3.jpg', desc: 'Main Bedroom' }
+                { src: 'yadava-annasatram/yadava-annasatram-ac1.jpeg', desc: 'AC Bedroom - Front View' },
+                { src: 'yadava-annasatram/yadava-annasatram-ac2.jpeg', desc: 'main room view' },
+                { src: 'yadava-annasatram/yadava-annasatram-ac3.jpeg', desc: 'clean washroom' }
             ]
         };
 
