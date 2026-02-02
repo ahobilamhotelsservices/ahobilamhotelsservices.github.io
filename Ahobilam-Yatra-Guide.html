@@ -196,6 +196,20 @@
             flex-shrink: 0;
         }
 
+        /* Sub-headings for Trekking */
+        .trek-subtitle {
+            color: #8B0000;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 4px solid #D4AF37;
+            padding-left: 15px;
+            background: #fff8e1;
+            padding: 10px 15px;
+            border-radius: 0 5px 5px 0;
+        }
+
         .info-table {
             width: 100%;
             border-collapse: collapse;
@@ -205,25 +219,10 @@
         .info-table td { padding: 12px; border-bottom: 1px solid #eee; }
         .info-table td:first-child { font-weight: 600; color: #444; width: 35%; }
 
-        /* Images */
-        .img-box {
-            height: 250px;
-            background: #eee;
-            border-radius: 8px;
-            margin-top: 20px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            border: 2px dashed #ddd;
-        }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* Double Image Grid */
+        /* --- IMAGE GRID (Two Images) --- */
         .double-img-grid {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             margin-top: 20px;
         }
         
@@ -232,20 +231,32 @@
             text-align: center;
         }
 
-        .img-wrapper .img-box {
-            height: 180px; 
-            margin-top: 0;
+        .img-box {
+            height: 220px;
+            background: #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border: 1px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .img-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
         }
 
         .img-caption {
             display: block;
             margin-top: 10px;
-            font-size: 0.95rem;
-            font-weight: bold;
+            font-size: 0.9rem;
+            font-weight: 600;
             color: var(--dark-brown);
             background: #fff8e1;
-            padding: 8px;
+            padding: 8px 10px;
             border-radius: 4px;
             border: 1px solid #eee;
         }
@@ -260,10 +271,9 @@
         }
 
         /* ========================================= */
-        /* --- MOBILE FIXES (UPDATED) --- */
+        /* --- MOBILE RESPONSIVE --- */
         /* ========================================= */
         @media (max-width: 900px) {
-            
             .guide-layout { 
                 flex-direction: column; 
                 padding: 0;
@@ -273,12 +283,12 @@
             
             .guide-hero h1 { font-size: 2.2rem; }
 
-            /* 1. Mobile Menu - NO FLOATING (Normal Flow) */
+            /* Mobile Menu */
             .sidebar-nav {
-                position: relative; /* Normal position */
+                position: relative;
                 width: 100%;
                 height: auto;
-                background: #fdf5e6; /* Theme BG */
+                background: #fdf5e6;
                 border-radius: 0;
                 padding: 15px;
                 border-left: none;
@@ -295,13 +305,11 @@
                 text-align: center;
             }
 
-            /* 2. Mobile Menu - GRID LAYOUT (Two Columns) */
             .nav-list { 
                 display: grid;
-                grid-template-columns: 1fr 1fr; /* Two items per row */
+                grid-template-columns: 1fr 1fr;
                 gap: 10px; 
             }
-            
             .nav-list li { margin: 0; }
 
             .nav-list a {
@@ -316,21 +324,76 @@
             
             /* Section Styling */
             .content-stream { padding: 15px; }
-            
             .guide-section { 
                 padding: 25px 20px; 
                 margin-bottom: 20px;
-                scroll-margin-top: 20px; /* Scroll fix */
+                scroll-margin-top: 20px;
             }
-            
             .sec-title { font-size: 1.4rem; }
             
-            /* Mobile Images */
+            /* Stack Images on Mobile */
             .double-img-grid { 
-                flex-direction: column; /* Stack images on mobile */
+                flex-direction: column; 
                 gap: 20px; 
             }
-            .img-wrapper .img-box { height: 200px; width: 100%; }
+            .img-box { height: 220px; width: 100%; }
+        }
+        /* --- Route Diversion Box Styles --- */
+        .route-box-container {
+            background-color: #fff9f9;
+            border: 1px solid #f0e0e0;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .route-heading {
+            color: #8B0000;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .route-options {
+            display: flex;
+            gap: 20px;
+        }
+
+        .route-card {
+            flex: 1;
+            background: #fff;
+            border: 2px solid #D4AF37;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .route-card h4 {
+            color: #D4AF37;
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .route-card p {
+            font-size: 0.95rem;
+            color: #444;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .circular-note {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #2c1e12;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .route-options { flex-direction: column; }
         }
     </style>
 </head>
@@ -349,10 +412,12 @@
                 <li><a href="#arrival">Arrival</a></li>
                 <li><a href="#karanja">Karanja</a></li>
                 <li><a href="#upper">Upper Ahobilam</a></li>
-                <li><a href="#trek">Trek Route</a></li>
+                <li><a href="#trek">Sacred Trek</a></li>
+                <li><a href="#prahlada">Prahlada Badi</a></li>
                 <li><a href="#ugra">Ugra Sthambam</a></li>
                 <li><a href="#food">Annadhanam</a></li>
-                <li><a href="#jeep">Jeep Safari</a></li>
+                <li><a href="#pavana">Pavana (Jeep)</a></li>
+                <li><a href="#bhargava">Bhargava (Jeep)</a></li>
                 <li><a href="#lower">Lower Temple</a></li>
             </ul>
         </aside>
@@ -361,94 +426,193 @@
 
             <section id="arrival" class="guide-section">
                 <h2 class="sec-title"><span class="sec-num">01</span> Arrival Essentials</h2>
-                <p>Welcome to Ahobilam. Upon entry, please be prepared for the check-posts.</p>
+                <p>Welcome to Ahobilam. Upon entry, please be prepared for the check-posts and entry formalities. The journey starts with a forest check-post.</p>
                 <table class="info-table">
-                    <tr><td>Vehicle Fee</td><td>₹150/-</td></tr>
-                    <tr><td>Forest Fee</td><td>₹50/-</td></tr>
-                    <tr><td>Food</td><td>Available from 6:00 AM</td></tr>
+                    <tr><td>Vehicle Fee</td><td>₹150/- (Approx)</td></tr>
+                    <tr><td>Forest Fee</td><td>₹50/- (On the way to Upper Ahobilam per Vehicle)</td></tr>
+                    <tr><td>Tiffin/Breakfast</td><td>Available from 6:00 AM (Lower Ahobilam Bypass road and outpost road)</td></tr>
                 </table>
             </section>
 
             <section id="karanja" class="guide-section">
                 <h2 class="sec-title"><span class="sec-num">02</span> Karanja Narasimha</h2>
-                <p>Located on the way to Upper Ahobilam. This is usually the first stop for pilgrims.</p>
+                <p>Located on the way to Upper Ahobilam. This is usually the first stop for pilgrims visiting by road.</p>
                 <div class="alert-box">
-                    ⚠️ <strong>Weekend Note:</strong> Private vehicles might be stopped here. Use the free shuttle bus.
+                    ⚠️ <strong>Weekend Note:</strong>  On Friday, Saturday, and Sunday, private vehicles are restricted. Gates towards Upper Ahobilam are closed during heavy crowd. Kindly park here and use the Free Shuttle Bus or go by walk.
                 </div>
-                <div class="img-box"><img src="karanja1.jpg" alt="Karanja"></div>
+                <div class="double-img-grid">
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/karanja.jpg" alt="Karanja Temple"></div>
+                        <span class="img-caption">Temple View</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/karanja2.jpg" alt="Hanuman Idol"></div>
+                        <span class="img-caption">Karanja Tree</span>
+                    </div>
+                </div>
             </section>
 
             <section id="upper" class="guide-section">
                 <h2 class="sec-title"><span class="sec-num">03</span> Upper Ahobilam</h2>
-                <p>The main Eguva Ahobilam temple is a short 10-minute walk from the parking area.</p>
+                <p>The main Eguva Ahobilam temple is a short 10-minute walk from the parking area. The divine energy starts here.</p>
                 <table class="info-table">
                     <tr><td>Darshan</td><td>7 AM - 1 PM | 2 PM - 7 PM</td></tr>
-                    <tr><td>Special Darshan</td><td>₹100/-</td></tr>
+                    <tr><td>Special Darshan</td><td>₹100/- (Free Dharshan available)</td></tr>
                     <tr><td>Doli Service</td><td>Available for full trek (₹4000)</td></tr>
                 </table>
-                <div class="img-box"><img src="upper1.jpg" alt="Upper Temple"></div>
+                <div class="double-img-grid">
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/upperahobilam.jpg" alt="Upper Temple"></div>
+                        <span class="img-caption">Main Gopuram</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/upperahobilam2.jpg" alt="Upper Temple Inside"></div>
+                        <span class="img-caption">Sanctum Entrance</span>
+                    </div>
+                </div>
             </section>
 
             <section id="trek" class="guide-section">
                 <h2 class="sec-title"><span class="sec-num">04</span> The Sacred Trek</h2>
-                <p>From the Upper Temple, proceed to Varaha, Jwala, and Malola temples.</p>
-                <ul style="padding-left: 20px;">
-                    <li><strong>Option A:</strong> Right steps -> Malola Temple (Easy).</li>
-                    <li><strong>Option B:</strong> Left bridge -> Jwala Temple (Moderate).</li>
-                </ul>
-                <p><strong>Tip:</strong> Complete the loop: Varaha → Jwala → Malola.</p>
-                
+                <p>From the Upper Temple, the trek begins. Follow the path carefully.</p>
+
+                <h3 class="trek-subtitle">A. Kroda (Varaha) Narasimha</h3>
+                <p>Located very close to the main Upper Ahobilam temple. The Lord is in the form of a Boar.</p>
                 <div class="double-img-grid">
                     <div class="img-wrapper">
-                        <div class="img-box"><img src="trek1.jpg" alt="Malola Route"></div>
-                        <span class="img-caption">Malola Route</span>
+                        <div class="img-box"><img src="Temple-places/varaha1.jpg" alt="Varaha Temple"></div>
+                        <span class="img-caption">Varaha Temple</span>
                     </div>
                     <div class="img-wrapper">
-                        <div class="img-box"><img src="trek2.jpg" alt="Jwala Route"></div>
-                        <span class="img-caption">Jwala Route</span>
+                        <div class="img-box"><img src="Temple-places/varaha2.jpg" alt="Varaha Idol"></div>
+                        <span class="img-caption">Lord Kroda</span>
+                    </div>
+                </div>
+
+                <div class="route-box-container">
+                    <h3 class="route-heading">Route Diversion at Varaha Temple:</h3>
+                    
+                    <div class="route-options">
+                        <div class="route-card">
+                            <h4>Option A: Malola Path (Right)</h4>
+                            <p>Take steps on <strong>Temple Right</strong>. Climb 250 steps (30 mins). Easy route.</p>
+                        </div>
+
+                        <div class="route-card">
+                            <h4>Option B: Jwala Path (Left)</h4>
+                            <p>Take <strong>Bridge on Left</strong>. River route + 900 steps (1.5 Hours). Scenic route.</p>
+                        </div>
+                    </div>
+
+                    <p class="circular-note"><strong>Tip:</strong> Go to Jwala (Left) first -> Cross top bridge -> Come down via Malola (Right).</p>
+                </div>
+
+                <h3 class="trek-subtitle">B. Jwala & Malola</h3>
+                <p>Proceed further to reach Jwala (where the Lord killed Hiranyakashipu) and Malola (Lord with Lakshmi).</p>
+                <div class="double-img-grid">
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/jwala.jpg" alt="Jwala Route"></div>
+                        <span class="img-caption">Way to Jwala</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/malolaroute.jpg" alt="Malola Temple"></div>
+                        <span class="img-caption">Malola Narasimha</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="prahlada" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">05</span> Prahlada Badi (Mettu)</h2>
+                <p>This is a cave shrine where Prahlada is believed to have learnt education. The rocks here look like slate and chalk and Located 800m from Malola Temple.</p>
+                <div class="double-img-grid">
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/badi.jpg" alt="Prahlada Badi Cave"></div>
+                        <span class="img-caption">The Cave</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/badi2.jpg" alt="View from Prahlada Badi"></div>
+                        <span class="img-caption">Scenic View</span>
                     </div>
                 </div>
             </section>
 
             <section id="ugra" class="guide-section">
-                <h2 class="sec-title"><span class="sec-num">05</span> Ugra Sthambam</h2>
-                <p>The hardest part of the trek. The vertical pillar where the Lord appeared.</p>
+                <h2 class="sec-title"><span class="sec-num">06</span> Ugra Sthambam</h2>
+                <p>The hardest part of the trek. The vertical pillar where the Lord appeared. It requires physical fitness and devotion.</p>
                 <div class="alert-box">
-                    🛑 Not recommended for elders or people with health issues. Steep climb.
+                    🛑 <strong>Caution:</strong> Steep climb. Not recommended for elders or people with health issues.
                 </div>
-                <div class="img-box"><img src="ugra1.jpg" alt="Ugra Sthambam"></div>
+                <div class="double-img-grid">
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/ugra.jpg" alt="Ugra Sthambam View"></div>
+                        <span class="img-caption">The Peak</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/ugra2.jpg" alt="Climbing Path"></div>
+                        <span class="img-caption">Steep Path</span>
+                    </div>
+                </div>
             </section>
 
             <section id="food" class="guide-section">
-                <h2 class="sec-title"><span class="sec-num">06</span> Annadhanam</h2>
-                <p>Free meals are served at various Satrams if you complete Darshan by 12:30 PM.</p>
-                <p><strong>Available at:</strong> Arya Vysya Satram, Brahmana Satram, Nitya Annadhanam.</p>
+                <h2 class="sec-title"><span class="sec-num">07</span> Annadhanam</h2>
+                <p>Free meals are served at various Satrams if you complete Darshan by 12:30 PM. It is pure vegetarian Satvik food.</p>
+                <p><strong>Available at:</strong> Yogi vemana reddy annasatram, Rayala Charitable trust,Arya Vysya Satram, Brahmana Satram, Nitya Annadhanam.</p>
             </section>
 
-            <section id="jeep" class="guide-section">
-                <h2 class="sec-title"><span class="sec-num">07</span> Jeep Safari</h2>
-                <p>Pavana and Bhargava temples are deep in the forest. You need a local Jeep.</p>
-                <table class="info-table">
-                    <tr><td>Cost</td><td>₹3500/- (Max 6 people)</td></tr>
-                    <tr><td>Time</td><td>2.5 Hours Round Trip</td></tr>
-                </table>
-                <div class="img-box"><img src="jeep.jpg" alt="Jeep"></div>
+            <section id="pavana" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">08</span> Pavana Narasimha (Jeep)</h2>
+                <p>Located deep inside the forest on the banks of River Pavana. You need to hire a local Jeep to reach Pavana Narasimha and Bhargava Narasimha. It is known as 'Kshetra Ratna'.</p>
+                <div class="double-img-grid">
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/pavana.jpg" alt="Pavana Temple"></div>
+                        <span class="img-caption">Pavana Temple</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/pavanajeep.jpg" alt="Jeep Safari"></div>
+                        <span class="img-caption">Jeep Route</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="bhargava" class="guide-section">
+                <h2 class="sec-title"><span class="sec-num">09</span> Bhargava Narasimha (Jeep)</h2>
+                <p>Located near a sacred pond called Akshaya Theertham. Lord Parashurama performed penance here. The route is scenic and muddy.</p>
+                <div class="double-img-grid">
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/bhargava1.jpg" alt="Bhargava Temple"></div>
+                        <span class="img-caption">Bhargava Temple</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/bhargava3.jpg" alt="Akshaya Theertham"></div>
+                        <span class="img-caption">Akshaya Theertham</span>
+                    </div>
+                </div>
             </section>
 
             <section id="lower" class="guide-section">
-                <h2 class="sec-title"><span class="sec-num">08</span> Lower Ahobilam</h2>
-                <p>Visit the Lakshmi Narasimha Swamy temple and the daily Gopuja.</p>
+                <h2 class="sec-title"><span class="sec-num">10</span> Lower Ahobilam</h2>
+                <p>Visit the Lakshmi Narasimha Swamy temple and witness the daily Gopuja in the early morning.</p>
                 <table class="info-table">
                     <tr><td>Gopuja</td><td>5:50 AM - 6:10 AM</td></tr>
                     <tr><td>Darshan</td><td>6:30 AM - 1:00 PM | 3:00 PM - 8:00 PM</td></tr>
                 </table>
-                <div class="img-box"><img src="lower1.jpg" alt="Lower Temple"></div>
+                <div class="double-img-grid">
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/abm1.jpg" alt="Lower Temple"></div>
+                        <span class="img-caption">Main Temple</span>
+                    </div>
+                    <div class="img-wrapper">
+                        <div class="img-box"><img src="Temple-places/abm2.jpg" alt="Gopuram"></div>
+                        <span class="img-caption">Temple Tower</span>
+                    </div>
+                </div>
             </section>
 
         </main>
     </div>
 
-   <footer class="main-footer">
+       <footer class="main-footer">
     <div class="footer-container">
         <div class="footer-box about-box">
     <img src="foter-logo.png" alt="Ahobilam Hotels Logo" class="footer-logo">
@@ -492,6 +656,5 @@
         <p>&copy; 2026 Ahobilam Hotels & Services. All Rights Reserved.</p>
     </div>
 </footer>
-
 </body>
 </html>
