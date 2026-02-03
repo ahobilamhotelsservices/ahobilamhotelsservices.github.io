@@ -59,6 +59,12 @@
             </div>
         </div>
     </header>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
     <style>
         /* --- THEME VARIABLES --- */
         :root {
@@ -254,31 +260,44 @@
     <div class="page-container">
 
         <div class="contact-grid">
-            
-            <div class="contact-card">
-                <div class="icon-circle"><i class="fas fa-phone-alt"></i></div>
-                <h3 class="card-title">Call Us</h3>
-                <p class="card-text">For booking enquiries & support<br><strong>+91 00000 00000</strong></p>
-                <a href="tel:+910000000000" class="action-btn">Call Now</a>
+        
+        <div class="contact-card">
+            <div class="icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8B0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
             </div>
-
-            <div class="contact-card">
-              <div class="icon-circle"><i class="fab fa-whatsapp"></i></div>
-              <h3 class="card-title">WhatsApp Chat</h3>
-              <p class="card-text">Get instant replies & photos<br>Available 9 AM - 9 PM</p>
-    
-               <a href="https://wa.me/918464919219?text=Namaste+Sir,+I+am+contacting+you+from+Ahobilam.in+Website.+I+need+details." class="action-btn whatsapp">Chat on WhatsApp</a>
-            </div>
-
-            <div class="contact-card">
-                <div class="icon-circle"><i class="fas fa-envelope"></i></div>
-                <h3 class="card-title">Email Us</h3>
-                <p class="card-text">ahobilamhotelsservices@gmail.com<br>Response within 24 Hours</p>
-                <a href="mailto:ahobilamhotelsservices@gmail.com" class="action-btn">Send Email</a>
-            </div>
-
+            <h3>Call Us</h3>
+            <p>For booking enquiries & support</p>
+            <p><strong>+91 0000000000</strong></p> <a href="tel:+91000000000" class="card-btn">Call Now</a>
         </div>
 
+        <div class="contact-card">
+            <div class="icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8B0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+            </div>
+            <h3>WhatsApp Chat</h3>
+            <p>Get instant replies & photos</p>
+            <p>Available 9 AM - 9 PM</p>
+            <a href="https://wa.me/919876543210" class="card-btn whatsapp">Chat on WhatsApp</a>
+        </div>
+
+        <div class="contact-card">
+            <div class="icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8B0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            </div>
+            <h3>Email Us</h3>
+            <p>ahobilamhotelsservices@gmail.com</p>
+            <p>Response within 24 Hours</p>
+            <a href="mailto:ahobilamhotelsservices@gmail.com" class="card-btn">Send Email</a>
+        </div>
+
+    </div>
         <div class="section-header">
             <h2>Our Location</h2>
             <p style="color:#666;">Main Office, Lower Ahobilam</p>
