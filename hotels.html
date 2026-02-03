@@ -392,6 +392,51 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->
 
-</body>
+<script>
+        // 1. Mobile Menu Toggle
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
 
+        // 2. Booking Function (Duplicate Fix Added)
+        function bookRoom(hotelName, roomType) {
+            // పాత బుకింగ్స్ తెచ్చుకోవడం
+            let bookings = JSON.parse(localStorage.getItem('ahobilam_bookings')) || [];
+            
+            // ఫోన్ నెంబర్ అడగడం
+            let phone = prompt("Please enter your Phone Number for booking:");
+            
+            if (phone) {
+                // కొత్త ID క్రియేట్ చేయడం (Booking #1, #2...)
+                let nextId = bookings.length + 1;
+                let bookingId = "Booking #" + nextId;
+                let today = new Date().toISOString().split('T')[0];
+
+                // డేటా సిద్ధం చేయడం
+                let newBooking = {
+                    id: bookingId,
+                    hotel: hotelName,
+                    room: roomType,
+                    date: today,
+                    status: "Pending", // Default status
+                    phone: phone
+                };
+
+                // సేవ్ చేయడం
+                bookings.push(newBooking);
+                localStorage.setItem('ahobilam_bookings', JSON.stringify(bookings));
+                localStorage.setItem('user_phone', phone); // ఫోన్ నెంబర్ సేవ్
+
+                alert("✅ Booking Successful!\nYour Booking ID: " + bookingId);
+                
+                // స్టేటస్ పేజీకి వెళ్ళడం (Optional)
+                window.location.href = "account.html"; 
+            } else {
+                alert("Booking Cancelled. Phone number is required.");
+            }
+        }
+    </script>
+
+</body>
 </html>
